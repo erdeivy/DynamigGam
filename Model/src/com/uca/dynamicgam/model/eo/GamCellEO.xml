@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamCellEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_CELL"
+  AliasName="GamCellEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="RowKey"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ROW_KEY"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_CELL"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"/>
+  <Attribute
+    Name="ColumnName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="COLUMN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_CELL"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CellValue"
+    IsNotNull="true"
+    Precision="100"
+    ColumnName="CELL_VALUE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_CELL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamRows"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamCeldaFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamCeldaFkAS.GamRows"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamCeldaFkAS.GamCell"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GamCeldaPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_CELDA_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamCellEO.RowKey"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamCellEO.ColumnName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamCeldaFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_FILAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_CELDA_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamCellEO.RowKey"/>
+    </AttrArray>
+  </Key>
+</Entity>

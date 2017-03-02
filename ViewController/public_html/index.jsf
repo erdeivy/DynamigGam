@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Dynamic Gamification" id="d1" styleClass="mainPsl">
+        <af:form id="f1">
+            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.MenuBean.pslMain}" styleClass="mainPsl">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:region value="#{bindings.dynamictf.regionModel}" id="r1"/>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top">
+                    <af:menuBar id="mb1">
+                        <af:menu text="Menu" id="m1">
+                            <af:commandMenuItem text="Welcome" id="cmi2"
+                                                action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
+                            <af:menu text="Administration" id="m2">
+                                <af:commandMenuItem text="Schemas" id="cmi1"
+                                                    action="#{backingBeanScope.MenuBean.goSchemasAction}"/>
+                                <af:commandMenuItem text="Users" id="cmi4"
+                                                    action="#{backingBeanScope.MenuBean.goUsersAction}"/>
+                                <af:commandMenuItem text="Roles" id="cmi5"
+                                                    action="#{backingBeanScope.MenuBean.goRolesAction}"/>
+                                <af:commandMenuItem text="Rewards" id="cmi3"
+                                                    action="#{backingBeanScope.MenuBean.goRewardsAction}"/>
+                            </af:menu>
+                            <af:commandMenuItem text="Tables" id="cmi6"
+                                                action="#{backingBeanScope.MenuBean.goViewTablesAction}"/>
+                        </af:menu>
+                    </af:menuBar>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

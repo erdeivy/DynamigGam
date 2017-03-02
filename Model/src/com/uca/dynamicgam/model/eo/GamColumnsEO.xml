@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamColumnsEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_COLUMNS"
+  AliasName="GamColumnsEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ColumnName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="COLUMN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_COLUMNS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TableName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="TABLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_COLUMNS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamTables"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamColumnasFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamColumnasFkAS.GamTables"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamColumnasFkAS.GamColumns"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamActions"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS.GamActions"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS.GamColumns"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="GamColumnasPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_COLUMNAS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamColumnsEO.ColumnName"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamColumnsEO.TableName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamColumnasFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_TABLAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_COLUMNAS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamColumnsEO.TableName"/>
+    </AttrArray>
+  </Key>
+</Entity>

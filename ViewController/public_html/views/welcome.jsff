@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+        <af:image id="i1" source="/images/UCA_logo.gif" inlineStyle="width: 250px;" shortDesc="UCA" rendered="false"/>
+        <af:outputText value="TODO: Show logo"/>
+        <af:spacer height="10" id="s1"/>
+        <af:outputText value="Welcome! This is the DynamicGam application. It's meant to be a CRUD system for several tables, not attached to a static datamodel."
+                       id="ot1"/>
+    </af:panelGroupLayout>
+</ui:composition>

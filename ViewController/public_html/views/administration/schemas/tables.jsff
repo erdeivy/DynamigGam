@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox text="#{viewcontrollerBundle.TABLES}" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                        <af:button icon="/icons/add.png" actionListener="#{bindings.CreateInsert.execute}"
+                                   text="#{viewcontrollerBundle.NEW_TABLE}" id="b4"/>
+                        <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                                   text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b8"/>
+                        <af:button icon="/icons/cancel.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.ROLLBACK_LABEL}" immediate="true" id="b9">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button icon="/icons/back.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" id="b1" action="goBack"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.GamTablesVO.collectionModel}" var="row"
+                          rows="#{bindings.GamTablesVO.rangeSize}"
+                          emptyText="#{bindings.GamTablesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.GamTablesVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.GamTablesVO.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.GamTablesVO.rangeSize}"
+                          filterModel="#{bindings.GamTablesVOQuery.queryDescriptor}"
+                          queryListener="#{bindings.GamTablesVOQuery.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="column:c1" partialTriggers="::b4 ::b9 :::pc2:b2 :::pc2:b7"
+                          editingMode="clickToEdit">
+                    <af:column sortProperty="#{bindings.GamTablesVO.hints.TableName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamTablesVO.hints.TableName.label}" id="c1">
+                        <af:inputText value="#{row.bindings.TableName.inputValue}"
+                                      label="#{bindings.GamTablesVO.hints.TableName.label}"
+                                      required="#{bindings.GamTablesVO.hints.TableName.mandatory}"
+                                      columns="#{bindings.GamTablesVO.hints.TableName.displayWidth}"
+                                      maximumLength="#{bindings.GamTablesVO.hints.TableName.precision}"
+                                      shortDesc="#{bindings.GamTablesVO.hints.TableName.tooltip}" id="it1"
+                                      autoSubmit="true">
+                            <f:validator binding="#{row.bindings.TableName.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.DELETE}" id="c2" align="center" width="50">
+                        <af:link actionListener="#{bindings.Delete.execute}" shortDesc="#{viewcontrollerBundle.DELETE}"
+                                 icon="/icons/delete.png" id="b3"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </af:panelBox>
+        <af:panelBox text="#{viewcontrollerBundle.TABLE_COLUMNS}" id="pb2">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t4">
+                        <af:button icon="/icons/add.png" actionListener="#{bindings.CreateInsert1.execute}"
+                                   text="#{viewcontrollerBundle.NEW_COLUMN}" id="b2"/>
+                        <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                                   text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b6"/>
+                        <af:button icon="/icons/cancel.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.ROLLBACK_LABEL}" immediate="true" id="b7">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button icon="/icons/back.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" id="b1" action="goBack"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.GamColumnsVO.collectionModel}" var="row"
+                          rows="#{bindings.GamColumnsVO.rangeSize}"
+                          emptyText="#{bindings.GamColumnsVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.GamColumnsVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.GamColumnsVO.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.GamColumnsVO.rangeSize}" columnStretching="column:c3"
+                          filterModel="#{bindings.GamColumnsVOQuery.queryDescriptor}"
+                          queryListener="#{bindings.GamColumnsVOQuery.processQuery}" varStatus="vs" id="t2"
+                          partialTriggers="::b2 ::b7 :::pc1:b4 :::pc1:b9" editingMode="clickToEdit">
+                    <af:column sortProperty="#{bindings.GamColumnsVO.hints.ColumnName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamColumnsVO.hints.ColumnName.label}" id="c3">
+                        <af:inputText value="#{row.bindings.ColumnName.inputValue}"
+                                      label="#{bindings.GamColumnsVO.hints.ColumnName.label}"
+                                      required="#{bindings.GamColumnsVO.hints.ColumnName.mandatory}"
+                                      columns="#{bindings.GamColumnsVO.hints.ColumnName.displayWidth}"
+                                      maximumLength="#{bindings.GamColumnsVO.hints.ColumnName.precision}"
+                                      shortDesc="#{bindings.GamColumnsVO.hints.ColumnName.tooltip}" id="it2"
+                                      autoSubmit="true">
+                            <f:validator binding="#{row.bindings.ColumnName.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.DELETE}" id="c4" align="center" width="50">
+                        <af:link actionListener="#{bindings.Delete1.execute}" shortDesc="#{viewcontrollerBundle.DELETE}"
+                                 icon="/icons/delete.png" id="b5"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </af:panelBox>
+    </af:panelGroupLayout>
+</ui:composition>

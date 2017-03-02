@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamSchemaRoleSchemaFkVL"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  EntityAssociation="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS">
+  <ViewLinkDefEnd
+    Name="GamSchemas"
+    Cardinality="1"
+    Source="true"
+    Owner="com.uca.dynamicgam.model.vo.GamSchemasVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="GamSchemas"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.vo.GamSchemasVO.SchemaName"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="GamSchemaRole"
+    Cardinality="-1"
+    Owner="com.uca.dynamicgam.model.vo.GamSchemaRoleVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="GamSchemaRole"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.vo.GamSchemaRoleVO.SchemaName"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamSchemasEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_SCHEMAS"
+  AliasName="GamSchemasEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="SchemaName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="SCHEMA_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_SCHEMAS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamTables"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamTablasFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamTablasFkAS.GamTables"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamTablasFkAS.GamSchemas"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamSchemaRole"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS.GamSchemaRole"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS.GamSchemas"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamStrategy"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamStrategyFk1AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamStrategyFk1AS.GamStrategy"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamStrategyFk1AS.GamSchemas"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="GamEsquemasPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_ESQUEMAS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamSchemasEO.SchemaName"/>
+    </AttrArray>
+  </Key>
+</Entity>

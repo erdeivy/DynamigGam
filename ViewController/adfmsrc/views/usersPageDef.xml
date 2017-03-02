@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="usersPageDef" Package="views">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GamUsersVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="GamUsersVOIterator"/>
+    <searchRegion Binds="GamUsersVOIterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="GamUsersVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="GamUsersVOIterator" id="GamUsersVO">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamUsersVO" Name="GamUsersVO0">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="Pass"/>
+          <Item Value="Name"/>
+          <Item Value="Lastname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="GamUsersVOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="GamUsersVOIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="DynamicGamAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="DynamicGamAMDataControl"/>
+  </bindings>
+</pageDefinition>

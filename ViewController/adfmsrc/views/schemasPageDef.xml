@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="schemasPageDef" Package="views">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GamSchemasVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="GamSchemasVOIterator"/>
+    <searchRegion Binds="GamSchemasVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="GamSchemasVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="GamSchemasVOIterator" id="GamSchemasVO">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamSchemasVO" Name="GamSchemasVO0">
+        <AttrNames>
+          <Item Value="SchemaName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="GamSchemasVOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="GamSchemasVOIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="DynamicGamAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="DynamicGamAMDataControl"/>
+  </bindings>
+</pageDefinition>

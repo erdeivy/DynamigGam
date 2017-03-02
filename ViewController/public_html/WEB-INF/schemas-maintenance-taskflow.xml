@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="schemas-maintenance-taskflow">
+        <default-activity>schemas</default-activity>
+        <data-control-scope>
+            <shared/>
+        </data-control-scope>
+        <managed-bean id="__3">
+            <managed-bean-name>SchemaRolesBean</managed-bean-name>
+            <managed-bean-class>com.uca.dynamicgam.view.beans.SchemaRolesBean</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
+        <view id="schemas">
+            <page>/views/administration/schemas/schemas.jsff</page>
+        </view>
+        <view id="tables">
+            <page>/views/administration/schemas/tables.jsff</page>
+        </view>
+        <view id="schemaRoles">
+            <page>/views/administration/schemas/schemaRoles.jsff</page>
+        </view>
+        <control-flow-rule id="__1">
+            <from-activity-id>schemas</from-activity-id>
+            <control-flow-case id="__2">
+                <from-outcome>goTables</from-outcome>
+                <to-activity-id>tables</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__5">
+                <from-outcome>goSchemaRoles</from-outcome>
+                <to-activity-id>schemaRoles</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__6">
+            <from-activity-id>*</from-activity-id>
+            <control-flow-case id="__7">
+                <from-outcome>goBack</from-outcome>
+                <to-activity-id>schemas</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+    </task-flow-definition>
+</adfc-config>

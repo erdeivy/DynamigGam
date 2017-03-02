@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamTablesEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_TABLES"
+  AliasName="GamTablesEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="TableName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="TABLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_TABLES"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Schema"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="SCHEMA"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_TABLES"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamColumns"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamColumnasFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamColumnasFkAS.GamColumns"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamColumnasFkAS.GamTables"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamRows"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamFilasFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamFilasFkAS.GamRows"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamFilasFkAS.GamTables"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamSchemas"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamTablasFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamTablasFkAS.GamSchemas"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamTablasFkAS.GamTables"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamActions"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS.GamActions"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS.GamTables"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="GamTablasPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_TABLAS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamTablesEO.TableName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamTablasFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_ESQUEMAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_TABLAS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamTablesEO.Schema"/>
+    </AttrArray>
+  </Key>
+</Entity>

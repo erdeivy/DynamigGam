@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="rewardsPageDef"
+                Package="views.administration.rewards">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GamRewardVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="GamRewardVOIterator"/>
+    <searchRegion Binds="GamRewardVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="GamRewardVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="GamRewardVOIterator" id="GamRewardVO">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamRewardVO" Name="GamRewardVO0">
+        <AttrNames>
+          <Item Value="RewardName"/>
+          <Item Value="Description"/>
+          <Item Value="Image"/>
+          <Item Value="Quantifiable"/>
+          <Item Value="Weight"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="GamRewardVOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="DynamicGamAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="DynamicGamAMDataControl"/>
+  </bindings>
+</pageDefinition>

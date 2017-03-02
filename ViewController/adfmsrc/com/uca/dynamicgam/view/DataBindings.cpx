@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.12.39" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.uca.dynamicgam.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/views/administration/schemas/schemas.jsff" usageId="com_uca_dynamicgam_view_schemasPageDef"/>
+    <page path="/views/administration/schemas/tables.jsff" usageId="com_uca_dynamicgam_view_tablesPageDef"/>
+    <page path="/index.jsf" usageId="com_uca_dynamicgam_view_indexPageDef"/>
+    <page path="/views/tables/tablesList.jsff" usageId="com_uca_dynamicgam_view_tablesListPageDef"/>
+    <page path="/views/tables/dynamicTable.jsff" usageId="com_uca_dynamicgam_view_dynamicTablePageDef"/>
+    <page path="/WEB-INF/tables-list-taskflow.xml#tables-list-taskflow@view-dynamic-table-taskflow"
+          usageId="com_uca_dynamicgam_view_tables_list_taskflow_tables_list_taskflow_view_dynamic_table_taskflowPageDef"/>
+    <page path="/views/tables/dynamicRowEdit.jsff" usageId="com_uca_dynamicgam_view_dynamicRowEditPageDef"/>
+    <page path="/WEB-INF/view-dynamic-table-taskflow.xml#view-dynamic-table-taskflow@queryTableAndColumns" usageId="com_uca_dynamicgam_view_view_dynamic_table_taskflow_view_dynamic_table_taskflow_queryTableAndColumnsPageDef"/>
+    <page path="/views/administration/users/users.jsff" usageId="com_uca_dynamicgam_view_usersPageDef"/>
+    <page path="/views/administration/roles/roles.jsff" usageId="com_uca_dynamicgam_view_rolesPageDef"/>
+    <page path="/views/administration/schemas/schemaRoles.jsff" usageId="com_uca_dynamicgam_view_schemaRolesPageDef"/>
+    <page path="/views/administration/users/userRoles.jsff" usageId="com_uca_dynamicgam_view_userRolesPageDef"/>
+    <page path="/views/administration/rewards/rewards.jsff" usageId="com_uca_dynamicgam_view_rewardsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_uca_dynamicgam_view_schemasPageDef" path="views.schemasPageDef"/>
+    <page id="com_uca_dynamicgam_view_tablesPageDef" path="views.tablesPageDef"/>
+    <page id="com_uca_dynamicgam_view_indexPageDef" path="com.uca.dynamicgam.view.pageDefs.indexPageDef"/>
+    <page id="com_uca_dynamicgam_view_tablesListPageDef" path="views.tablesListPageDef"/>
+    <page id="com_uca_dynamicgam_view_dynamicTablePageDef" path="views.dynamicTablePageDef"/>
+    <page id="com_uca_dynamicgam_view_tables_list_taskflow_tables_list_taskflow_view_dynamic_table_taskflowPageDef"
+          path="com.uca.dynamicgam.view.pageDefs.tables_list_taskflow_tables_list_taskflow_view_dynamic_table_taskflowPageDef"/>
+    <page id="com_uca_dynamicgam_view_dynamicRowEditPageDef" path="views.dynamicRowEditPageDef"/>
+    <page id="com_uca_dynamicgam_view_view_dynamic_table_taskflow_view_dynamic_table_taskflow_queryTableAndColumnsPageDef" path="com.uca.dynamicgam.view.pageDefs.view_dynamic_table_taskflow_view_dynamic_table_taskflow_queryTableAndColumnsPageDef"/>
+    <page id="com_uca_dynamicgam_view_usersPageDef" path="views.usersPageDef"/>
+    <page id="com_uca_dynamicgam_view_rolesPageDef" path="views.rolesPageDef"/>
+    <page id="com_uca_dynamicgam_view_schemaRolesPageDef" path="views.schemaRolesPageDef"/>
+    <page id="com_uca_dynamicgam_view_userRolesPageDef" path="views.userRolesPageDef"/>
+    <page id="com_uca_dynamicgam_view_rewardsPageDef" path="views.administration.rewards.rewardsPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="DynamicGamAMDataControl" Package="com.uca.dynamicgam.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="DynamicGamAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="view_dynamic_table_taskflow_view_dynamic_table_taskflow_queryTableAndColumnsPageDef" Package="com.uca.dynamicgam.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="queryTableAndColumns" RequiresUpdateModel="true" Action="invokeMethod" MethodName="queryTableAndColumns" IsViewObjectMethod="true" DataControl="DynamicGamAMDataControl" InstanceName="data.DynamicGamAMDataControl.DynamicTableVO" ReturnName="data.DynamicGamAMDataControl.methodResults.queryTableAndColumns_DynamicGamAMDataControl_DynamicTableVO_queryTableAndColumns_result">
+      <NamedData NDName="schema" NDValue="#{pageFlowScope.schema}" NDType="java.lang.String"/>
+      <NamedData NDName="table" NDValue="#{pageFlowScope.table}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

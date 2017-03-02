@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+
+<AppModule
+   xmlns="http://xmlns.oracle.com/bc4j"
+   Name="DynamicGamAM"
+   Version="12.1.3.12.39"
+   InheritPersonalization="merge"
+   ComponentClass="com.uca.dynamicgam.model.am.DynamicGamAMImpl"
+   ComponentInterface="com.uca.dynamicgam.model.am.common.DynamicGamAM"
+   ClearCacheOnRollback="true">
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+   </DesignTime>
+   <Properties >
+      <SchemaBasedProperties >
+         <LABEL
+            ResId="com.uca.dynamicgam.model.am.DynamicGamAM_LABEL" >
+         </LABEL>
+      </SchemaBasedProperties>
+   </Properties>
+   <ViewUsage
+      Name="GamSchemasVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamSchemasVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamTablesVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamTablesVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamColumnsVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamColumnsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="AllTablesVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamTablesVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="DynamicTableVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamTablesVO" >
+      <ViewCriteriaUsage
+         Name="GamTablesVOCriteria"
+         FullName="com.uca.dynamicgam.model.vo.GamTablesVO.GamTablesVOCriteria" >
+      </ViewCriteriaUsage>
+   </ViewUsage>
+   <ViewUsage
+      Name="DynamicColumnsVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamColumnsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="DynamicRowsByTableVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamRowsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="DynamicCellsByRowVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamCellVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamUsersVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamUsersVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamRolesVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamRolesVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamUserRoleVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamUserRoleVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamSchemaRoleVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamSchemaRoleVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="AllRolesVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamRolesVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GamRewardVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardVO"/>
+   <ViewLinkUsage
+      Name="GamTablasFkVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamSchemasVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamTablesVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamColumnasFkVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamColumnasFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamTablesVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamColumnsVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamColumnasFkVL2"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamColumnasFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.DynamicTableVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.DynamicColumnsVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamFilasFkVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamFilasFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.DynamicTableVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.DynamicRowsByTableVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamCeldaFkVL2"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamCeldaFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.DynamicRowsByTableVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.DynamicCellsByRowVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamUserRoleUsersFkVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamUserRoleUsersFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamUsersVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamUserRoleVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamSchemaRoleSchemaFkVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamSchemaRoleSchemaFkVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamSchemasVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamSchemaRoleVO"
+      Reversed="false">
+   </ViewLinkUsage>
+   <ClientInterface
+      Name="__clientInterface" >
+      <Method
+         Name="createDynamicRowAndColumns"
+         MethodName="createDynamicRowAndColumns" >
+         <Return
+            Name="_return_type_"
+            Type="void" >
+         </Return>
+      </Method>
+      <Method
+         Name="getAssignedRoles"
+         MethodName="getAssignedRoles">
+         <Return
+            Name="_return_type_"
+            Type="java.util.List"/>
+         <Parameter
+            Name="viewObject"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="modifyRoles"
+         MethodName="modifyRoles">
+         <Return
+            Name="_return_type_"
+            Type="void"/>
+         <Parameter
+            Name="viewObject"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="newAssignedRoles"
+            Type="java.util.List"/>
+      </Method>
+   </ClientInterface>
+   <ResourceBundle >
+      <PropertiesBundle
+         PropertiesFile="com.uca.dynamicgam.model.ModelBundle" >
+      </PropertiesBundle>
+   </ResourceBundle>
+</AppModule>

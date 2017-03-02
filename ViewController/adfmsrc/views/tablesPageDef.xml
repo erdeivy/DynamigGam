@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="tablesPageDef" Package="views">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GamTablesVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="GamTablesVOIterator"/>
+    <searchRegion Binds="GamTablesVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="GamTablesVOQuery"/>
+    <iterator Binds="GamColumnsVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="GamColumnsVOIterator"/>
+    <searchRegion Binds="GamColumnsVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="GamColumnsVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="GamTablesVOIterator" id="GamTablesVO">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamTablesVO" Name="GamTablesVO0">
+        <AttrNames>
+          <Item Value="TableName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="GamColumnsVOIterator" id="GamColumnsVO">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamColumnsVO" Name="GamColumnsVO0">
+        <AttrNames>
+          <Item Value="ColumnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="GamTablesVOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="GamTablesVOIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="GamColumnsVOIterator" id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="GamColumnsVOIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="DynamicGamAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="DynamicGamAMDataControl"/>
+  </bindings>
+</pageDefinition>

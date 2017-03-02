@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelBox text="#{viewcontrollerBundle.ROLES_ASSIGNED_USER}" id="pb1">
+        <af:selectManyShuttle id="sms1" simple="true" autoSubmit="true"
+                              valueChangeListener="#{backingBeanScope.UserRolesBean.onChangeSchemaRoles}"
+                              binding="#{backingBeanScope.UserRolesBean.rolesShuttle}">
+            <f:selectItems value="#{bindings.Roles.items}" id="si1"/>
+        </af:selectManyShuttle>
+        <af:toolbar id="t1">
+            <af:button actionListener="#{backingBeanScope.UserRolesBean.saveListener}"
+                       text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b2" icon="/icons/save.png"/>
+            <af:button actionListener="#{bindings.Rollback.execute}" text="#{viewcontrollerBundle.BACK_LABEL}"
+                       immediate="true" id="b3" action="goBack" icon="/icons/back.png">
+                <af:resetActionListener/>
+            </af:button>
+        </af:toolbar>
+        <f:event listener="#{backingBeanScope.UserRolesBean.onRegionLoad}" type="preRenderComponent"/>
+    </af:panelBox>
+</ui:composition>

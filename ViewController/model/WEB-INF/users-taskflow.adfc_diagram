@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">users</property>
+      <property
+         name="page">/views/users.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>users&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">181.79883</property>
+      <property
+         name="x">169.5</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">userRoles</property>
+      <property
+         name="page">/views/userRoles.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>userRoles&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">179.09766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">445.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">goUserRoles</property>
+      <property
+         name="sdm:polyPoints">R50,210.5,181.44824,404.5,178.74707,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">goBack</property>
+      <property
+         name="sdm:polyPoints">L54,404.5,182.24707,210.54874,184.94824,R54</property>
+   </ControlFlowCase>
+</SDM>

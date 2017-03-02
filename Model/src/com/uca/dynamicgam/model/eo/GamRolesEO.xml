@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamRolesEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_ROLES"
+  AliasName="GamRolesEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="RoleName"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="ROLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_ROLES"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamUserRole"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamUserRoleRolesFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamUserRoleRolesFkAS.GamUserRole"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamUserRoleRolesFkAS.GamRoles"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamSchemaRole"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleRolesFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleRolesFkAS.GamSchemaRole"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleRolesFkAS.GamRoles"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="GamRolesPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_ROLES_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamRolesEO.RoleName"/>
+    </AttrArray>
+  </Key>
+</Entity>

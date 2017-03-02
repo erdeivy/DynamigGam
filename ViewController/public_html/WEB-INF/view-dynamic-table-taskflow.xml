@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="view-dynamic-table-taskflow">
+        <default-activity>queryTableAndColumns</default-activity>
+        <data-control-scope>
+            <shared/>
+        </data-control-scope>
+        <input-parameter-definition id="__1">
+            <name>schema</name>
+            <value>#{pageFlowScope.schema}</value>
+            <class>java.lang.String</class>
+            <required/>
+        </input-parameter-definition>
+        <input-parameter-definition id="__2">
+            <name>table</name>
+            <value>#{pageFlowScope.table}</value>
+            <class>java.lang.String</class>
+            <required/>
+        </input-parameter-definition>
+        <managed-bean id="__5">
+            <managed-bean-name>DynamicTableBean</managed-bean-name>
+            <managed-bean-class>com.uca.dynamicgam.view.beans.DynamicTableBean</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
+        <view id="dynamicTable">
+            <page>/views/tables/dynamicTable.jsff</page>
+        </view>
+        <task-flow-return id="goBack">
+            <outcome>
+                <name>goBack</name>
+            </outcome>
+        </task-flow-return>
+        <view id="dynamicRowEdit">
+            <page>/views/tables/dynamicRowEdit.jsff</page>
+        </view>
+        <method-call id="queryTableAndColumns">
+            <method>#{bindings.queryTableAndColumns.execute}</method>
+            <outcome>
+                <fixed-outcome>queryTableAndColumns</fixed-outcome>
+            </outcome>
+        </method-call>
+        <control-flow-rule id="__6">
+            <from-activity-id>dynamicTable</from-activity-id>
+            <control-flow-case id="__7">
+                <from-outcome>goBack</from-outcome>
+                <to-activity-id>goBack</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__10">
+                <from-outcome>edit</from-outcome>
+                <to-activity-id>dynamicRowEdit</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__11">
+            <from-activity-id>dynamicRowEdit</from-activity-id>
+            <control-flow-case id="__12">
+                <from-outcome>backToTable</from-outcome>
+                <to-activity-id>dynamicTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__13">
+            <from-activity-id>queryTableAndColumns</from-activity-id>
+            <control-flow-case id="__14">
+                <from-outcome>queryTableAndColumns</from-outcome>
+                <to-activity-id>dynamicTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+    </task-flow-definition>
+</adfc-config>

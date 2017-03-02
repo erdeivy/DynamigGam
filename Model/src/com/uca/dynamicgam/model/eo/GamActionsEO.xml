@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamActionsEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_ACTIONS"
+  AliasName="GamActionsEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="IdStrategy"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_STRATEGY"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_ACTIONS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="IdAction"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_ACTION"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_ACTIONS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="TableName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="TABLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_ACTIONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Operation"
+    IsNotNull="true"
+    Precision="10"
+    ColumnName="OPERATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_ACTIONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ColumnName"
+    Precision="50"
+    ColumnName="COLUMN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_ACTIONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Repetitions"
+    IsNotNull="true"
+    ColumnName="REPETITIONS"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_ACTIONS"
+    Precision="2"/>
+  <Attribute
+    Name="IdReward"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_REWARD"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_ACTIONS"/>
+  <AccessorAttribute
+    Name="GamTables"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS.GamTables"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS.GamActions"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamStrategy"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk1AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk1AS.GamStrategy"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk1AS.GamActions"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamColumns"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS.GamColumns"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS.GamActions"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GamActionsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_ACTIONS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.IdStrategy"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.IdAction"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamActionsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_STRATEGY_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_ACTIONS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.IdStrategy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamActionsFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_TABLAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_ACTIONS_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.TableName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamActionsFk3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_COLUMNAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_ACTIONS_FK3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.ColumnName"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.TableName"/>
+    </AttrArray>
+  </Key>
+</Entity>

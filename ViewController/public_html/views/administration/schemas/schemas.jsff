@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelBox text="#{viewcontrollerBundle.SCHEMAS}" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+                <af:toolbar id="t2">
+                    <af:button icon="/icons/add.png" actionListener="#{bindings.CreateInsert.execute}"
+                               text="#{viewcontrollerBundle.NEW_SCHEMA}" id="b2"/>
+                    <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                               text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b4"/>
+                    <af:button icon="/icons/cancel.png" actionListener="#{bindings.Rollback.execute}"
+                               text="#{viewcontrollerBundle.ROLLBACK_LABEL}" immediate="true" id="b5">
+                        <af:resetActionListener/>
+                    </af:button>
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.GamSchemasVO.collectionModel}" var="row"
+                      rows="#{bindings.GamSchemasVO.rangeSize}"
+                      emptyText="#{bindings.GamSchemasVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.GamSchemasVO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.GamSchemasVO.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.GamSchemasVO.rangeSize}"
+                      filterModel="#{bindings.GamSchemasVOQuery.queryDescriptor}"
+                      queryListener="#{bindings.GamSchemasVOQuery.processQuery}" varStatus="vs" id="t1"
+                      columnStretching="column:c1" partialTriggers="::b2 b3" editingMode="clickToEdit">
+                <af:column sortProperty="#{bindings.GamSchemasVO.hints.SchemaName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamSchemasVO.hints.SchemaName.label}" id="c1">
+                    <af:inputText value="#{row.bindings.SchemaName.inputValue}"
+                                  label="#{bindings.GamSchemasVO.hints.SchemaName.label}"
+                                  required="#{bindings.GamSchemasVO.hints.SchemaName.mandatory}"
+                                  columns="#{bindings.GamSchemasVO.hints.SchemaName.displayWidth}"
+                                  maximumLength="#{bindings.GamSchemasVO.hints.SchemaName.precision}"
+                                  shortDesc="#{bindings.GamSchemasVO.hints.SchemaName.tooltip}" id="it1"
+                                  autoSubmit="true">
+                        <f:validator binding="#{row.bindings.SchemaName.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{viewcontrollerBundle.EDIT_TABLES}" id="c2" width="70" align="center">
+                    <af:link shortDesc="#{viewcontrollerBundle.EDIT_TABLES}" action="goTables" id="b1" icon="/icons/edit.png"/>
+                </af:column>
+                <af:column headerText="#{viewcontrollerBundle.SET_ROLES}" id="c4" width="70" align="center">
+                    <af:link shortDesc="#{viewcontrollerBundle.SET_ROLES}" action="goSchemaRoles" id="l1" icon="/icons/user.png"/>
+                </af:column>
+                <af:column headerText="#{viewcontrollerBundle.DELETE}" id="c3" width="50" align="center">
+                    <af:link actionListener="#{bindings.Delete.execute}" shortDesc="#{viewcontrollerBundle.DELETE}"
+                             icon="/icons/delete.png" id="b3"/>
+                </af:column>
+            </af:table>
+        </af:panelCollection>
+    </af:panelBox>
+</ui:composition>

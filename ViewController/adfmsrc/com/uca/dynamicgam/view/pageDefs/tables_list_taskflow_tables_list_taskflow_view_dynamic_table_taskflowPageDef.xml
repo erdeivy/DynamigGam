@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39"
+                id="tables_list_taskflow_tables_list_taskflow_view_dynamic_table_taskflowPageDef"
+                Package="com.uca.dynamicgam.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="AllTablesVOIterator" Binds="AllTablesVO" DataControl="DynamicGamAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AllTablesVOIterator" id="TableName">
+      <AttrNames>
+        <Item Value="TableName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AllTablesVOIterator" id="Schema">
+      <AttrNames>
+        <Item Value="Schema"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

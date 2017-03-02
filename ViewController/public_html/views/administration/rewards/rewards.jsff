@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox text="#{viewcontrollerBundle.REWARDS}" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                        <af:button icon="/icons/add.png" actionListener="#{bindings.CreateInsert.execute}"
+                                   text="#{viewcontrollerBundle.NEW_REWARD}" id="b4"/>
+                        <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                                   text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b8"/>
+                        <af:button icon="/icons/cancel.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.ROLLBACK_LABEL}" immediate="true" id="b9">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button icon="/icons/back.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" id="b1" action="goBack"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.GamRewardVO.collectionModel}" var="row"
+                          rows="#{bindings.GamRewardVO.rangeSize}"
+                          emptyText="#{bindings.GamRewardVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.GamRewardVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.GamRewardVO.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.GamRewardVO.rangeSize}"
+                          filterModel="#{bindings.GamRewardVOQuery.queryDescriptor}"
+                          queryListener="#{bindings.GamRewardVOQuery.processQuery}" varStatus="vs"
+                          id="t1" partialTriggers="::b4" columnStretching="column:c2">
+                    <af:column sortProperty="#{bindings.GamRewardVO.hints.RewardName.name}" filterable="true" width="200"
+                               sortable="true" headerText="#{bindings.GamRewardVO.hints.RewardName.label}" id="c1">
+                        <af:inputText value="#{row.bindings.RewardName.inputValue}"
+                                      label="#{bindings.GamRewardVO.hints.RewardName.label}"
+                                      required="#{bindings.GamRewardVO.hints.RewardName.mandatory}"
+                                      columns="#{bindings.GamRewardVO.hints.RewardName.displayWidth}"
+                                      maximumLength="#{bindings.GamRewardVO.hints.RewardName.precision}"
+                                      shortDesc="#{bindings.GamRewardVO.hints.RewardName.tooltip}" id="it1">
+                            <f:validator binding="#{row.bindings.RewardName.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamRewardVO.hints.Description.name}" filterable="true" width="300"
+                               sortable="true" headerText="#{bindings.GamRewardVO.hints.Description.label}" id="c2">
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      label="#{bindings.GamRewardVO.hints.Description.label}"
+                                      required="#{bindings.GamRewardVO.hints.Description.mandatory}"
+                                      columns="#{bindings.GamRewardVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.GamRewardVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.GamRewardVO.hints.Description.tooltip}" id="it2">
+                            <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamRewardVO.hints.Image.name}" filterable="true" sortable="true"
+                               headerText="#{bindings.GamRewardVO.hints.Image.label}" id="c3">
+                        <af:inputText value="#{row.bindings.Image.inputValue}"
+                                      label="#{bindings.GamRewardVO.hints.Image.label}"
+                                      required="#{bindings.GamRewardVO.hints.Image.mandatory}"
+                                      columns="#{bindings.GamRewardVO.hints.Image.displayWidth}"
+                                      maximumLength="#{bindings.GamRewardVO.hints.Image.precision}"
+                                      shortDesc="#{bindings.GamRewardVO.hints.Image.tooltip}" id="it3">
+                            <f:validator binding="#{row.bindings.Image.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamRewardVO.hints.Quantifiable.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamRewardVO.hints.Quantifiable.label}" id="c4">
+                        <af:inputText value="#{row.bindings.Quantifiable.inputValue}"
+                                      label="#{bindings.GamRewardVO.hints.Quantifiable.label}"
+                                      required="#{bindings.GamRewardVO.hints.Quantifiable.mandatory}"
+                                      columns="#{bindings.GamRewardVO.hints.Quantifiable.displayWidth}"
+                                      maximumLength="#{bindings.GamRewardVO.hints.Quantifiable.precision}"
+                                      shortDesc="#{bindings.GamRewardVO.hints.Quantifiable.tooltip}" id="it4">
+                            <f:validator binding="#{row.bindings.Quantifiable.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamRewardVO.hints.Weight.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamRewardVO.hints.Weight.label}" id="c5">
+                        <af:inputText value="#{row.bindings.Weight.inputValue}"
+                                      label="#{bindings.GamRewardVO.hints.Weight.label}"
+                                      required="#{bindings.GamRewardVO.hints.Weight.mandatory}"
+                                      columns="#{bindings.GamRewardVO.hints.Weight.displayWidth}"
+                                      maximumLength="#{bindings.GamRewardVO.hints.Weight.precision}"
+                                      shortDesc="#{bindings.GamRewardVO.hints.Weight.tooltip}" id="it5">
+                            <f:validator binding="#{row.bindings.Weight.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.GamRewardVO.hints.Weight.format}"/>
+                        </af:inputText>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </af:panelBox>
+    </af:panelGroupLayout>
+</ui:composition>

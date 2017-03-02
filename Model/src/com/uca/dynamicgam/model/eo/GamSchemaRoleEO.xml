@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamSchemaRoleEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_SCHEMA_ROLE"
+  AliasName="GamSchemaRoleEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="SchemaName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="SCHEMA_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_SCHEMA_ROLE"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RoleName"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="ROLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_SCHEMA_ROLE"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamSchemas"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS.GamSchemas"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleSchemaFkAS.GamSchemaRole"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamRoles"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleRolesFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleRolesFkAS.GamRoles"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamSchemaRoleRolesFkAS.GamSchemaRole"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GamSchemaRolePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_SCHEMA_ROLE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamSchemaRoleEO.SchemaName"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamSchemaRoleEO.RoleName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamSchemaRoleRolesFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_ROLES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_SCHEMA_ROLE__ROLES_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamSchemaRoleEO.RoleName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamSchemaRoleSchemaFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_ESQUEMAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_SCHEMA_ROLE__SCHEMA_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamSchemaRoleEO.SchemaName"/>
+    </AttrArray>
+  </Key>
+</Entity>

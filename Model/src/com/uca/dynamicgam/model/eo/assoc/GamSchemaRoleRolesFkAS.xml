@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamSchemaRoleRolesFkAS"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="GamRoles"
+    Cardinality="1"
+    Source="true"
+    Owner="com.uca.dynamicgam.model.eo.GamRolesEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="GamRoles"/>
+      <Attr Name="_foreignKey" Value="com.uca.dynamicgam.model.eo.GamRolesEO.GamRolesPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamRolesEO.RoleName"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="GamSchemaRole"
+    Cardinality="-1"
+    Owner="com.uca.dynamicgam.model.eo.GamSchemaRoleEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="GamSchemaRole"/>
+      <Attr Name="_foreignKey" Value="com.uca.dynamicgam.model.eo.GamSchemaRoleEO.GamSchemaRoleRolesFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamSchemaRoleEO.RoleName"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
