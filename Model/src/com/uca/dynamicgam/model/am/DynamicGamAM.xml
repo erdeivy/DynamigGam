@@ -79,6 +79,12 @@
    <ViewUsage
       Name="GamRewardVO"
       ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardVO"/>
+   <ViewUsage
+      Name="GamStrategyVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamStrategyVO"/>
+   <ViewUsage
+      Name="GamActionsVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamActionsVO"/>
    <ViewLinkUsage
       Name="GamTablasFkVL1"
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"
@@ -128,6 +134,18 @@
       DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamSchemaRoleVO"
       Reversed="false">
    </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="GamSchemaStrategyVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamSchemaStrategyVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamSchemasVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamStrategyVO"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="GamStrategyActionsVL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamStrategyActionsVL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamStrategyVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamActionsVO"
+      Reversed="false"/>
    <ClientInterface
       Name="__clientInterface" >
       <Method

@@ -1,2 +1,163 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"></ui:composition>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox text="#{viewcontrollerBundle.STRATEGIES}" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="b2">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <af:button icon="/icons/add.png" actionListener="#{bindings.CreateInsert.execute}"
+                                   text="#{viewcontrollerBundle.NEW_STRATEGY}" id="b2"/>
+                        <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                                   text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b4"/>
+                        <af:button icon="/icons/cancel.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.ROLLBACK_LABEL}" immediate="true" id="b5">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button icon="/icons/back.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" action="goBack" id="b8"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.GamStrategyVO.collectionModel}" var="row"
+                          rows="#{bindings.GamStrategyVO.rangeSize}"
+                          emptyText="#{bindings.GamStrategyVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.GamStrategyVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.GamStrategyVO.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.GamStrategyVO.rangeSize}"
+                          filterModel="#{bindings.GamStrategyVOQuery.queryDescriptor}"
+                          queryListener="#{bindings.GamStrategyVOQuery.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="column:c2" partialTriggers=":::pc2:b1">
+                    <af:column width="25" align="center" rowHeader="true" id="counter">
+                        <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamStrategyVO.hints.StrategyName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamStrategyVO.hints.StrategyName.label}" id="c1"
+                               width="200">
+                        <af:inputText value="#{row.bindings.StrategyName.inputValue}"
+                                      label="#{bindings.GamStrategyVO.hints.StrategyName.label}"
+                                      required="#{bindings.GamStrategyVO.hints.StrategyName.mandatory}"
+                                      columns="#{bindings.GamStrategyVO.hints.StrategyName.displayWidth}"
+                                      maximumLength="#{bindings.GamStrategyVO.hints.StrategyName.precision}"
+                                      shortDesc="#{bindings.GamStrategyVO.hints.StrategyName.tooltip}" id="it1">
+                            <f:validator binding="#{row.bindings.StrategyName.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamStrategyVO.hints.Description.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamStrategyVO.hints.Description.label}" id="c2">
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      label="#{bindings.GamStrategyVO.hints.Description.label}"
+                                      required="#{bindings.GamStrategyVO.hints.Description.mandatory}"
+                                      columns="#{bindings.GamStrategyVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.GamStrategyVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.GamStrategyVO.hints.Description.tooltip}" id="it2">
+                            <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamStrategyVO.hints.IsActive.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamStrategyVO.hints.IsActive.label}" id="c4"
+                               align="center" width="75">
+                        <af:selectBooleanCheckbox value="#{row.bindings.IsActive.inputValue}"
+                                                  label="#{bindings.GamStrategyVO.hints.IsActive.label}"
+                                                  required="#{bindings.GamStrategyVO.hints.IsActive.mandatory}"
+                                                  shortDesc="#{bindings.GamStrategyVO.hints.IsActive.tooltip}"
+                                                  id="it3"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </af:panelBox>
+        <af:panelBox text="#{viewcontrollerBundle.ACTIONS}" id="pb2">
+            <af:panelCollection id="pc2" styleClass="AFStretchWidth" partialTriggers="b1">
+                <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                        <af:button icon="/icons/add.png" actionListener="#{bindings.CreateInsert1.execute}"
+                                   text="#{viewcontrollerBundle.NEW_ACTION}" id="b1"/>
+                        <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                                   text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b3"/>
+                        <af:button icon="/icons/cancel.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.ROLLBACK_LABEL}" immediate="true" id="b6">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button icon="/icons/back.png" actionListener="#{bindings.Rollback.execute}"
+                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" id="b7" action="goBack"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.GamActionsVO.collectionModel}" var="row"
+                          rows="#{bindings.GamActionsVO.rangeSize}"
+                          emptyText="#{bindings.GamActionsVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.GamActionsVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.GamActionsVO.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.GamActionsVO.rangeSize}"
+                          filterModel="#{bindings.GamActionsVOQuery.queryDescriptor}"
+                          queryListener="#{bindings.GamActionsVOQuery.processQuery}" varStatus="vs" id="t4"
+                          partialTriggers="::b1" columnStretching="column:c8">
+                    <af:column width="25" align="center" rowHeader="true" id="c9">
+                        <af:outputText value="#{vs.index+1}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamActionsVO.hints.Repetitions.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamActionsVO.hints.Repetitions.label}" id="c3">
+                        <af:inputNumberSpinbox value="#{row.bindings.Repetitions.inputValue}"
+                                               label="#{bindings.GamActionsVO.hints.Repetitions.label}"
+                                               required="#{bindings.GamActionsVO.hints.Repetitions.mandatory}"
+                                               columns="#{bindings.GamActionsVO.hints.Repetitions.displayWidth}"
+                                               shortDesc="#{bindings.GamActionsVO.hints.Repetitions.tooltip}" id="it4"
+                                               minimum="1">
+                            <f:validator binding="#{row.bindings.Repetitions.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.GamActionsVO.hints.Repetitions.format}"/>
+                        </af:inputNumberSpinbox>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamActionsVO.hints.Operation.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamActionsVO.hints.Operation.label}" id="c5">
+                        <af:selectOneChoice value="#{row.bindings.Operation.inputValue}"
+                                            label="#{row.bindings.Operation.label}"
+                                            required="#{bindings.GamActionsVO.hints.Operation.mandatory}"
+                                            shortDesc="#{bindings.GamActionsVO.hints.Operation.tooltip}" id="soc1">
+                            <f:selectItems value="#{row.bindings.Operation.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.Operation.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamActionsVO.hints.TableName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamActionsVO.hints.TableName.label}" id="c6"
+                               width="150">
+                        <af:selectOneChoice value="#{row.bindings.TableName.inputValue}"
+                                            label="#{row.bindings.TableName.label}" autoSubmit="true"
+                                            required="#{bindings.GamActionsVO.hints.TableName.mandatory}"
+                                            shortDesc="#{bindings.GamActionsVO.hints.TableName.tooltip}" id="soc2">
+                            <f:selectItems value="#{row.bindings.TableName.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.TableName.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamActionsVO.hints.ColumnName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamActionsVO.hints.ColumnName.label}" id="c7"
+                               width="150">
+                        <af:selectOneChoice value="#{row.bindings.ColumnName.inputValue}"
+                                            label="#{row.bindings.ColumnName.label}"
+                                            disabled="#{empty row.bindings.TableName.inputValue}"
+                                            required="#{bindings.GamActionsVO.hints.ColumnName.mandatory}"
+                                            shortDesc="#{bindings.GamActionsVO.hints.ColumnName.tooltip}" id="soc3"
+                                            partialTriggers="soc2">
+                            <f:selectItems value="#{row.bindings.ColumnName.items}" id="si3"/>
+                            <f:validator binding="#{row.bindings.ColumnName.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.GamActionsVO.hints.RewardName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.GamActionsVO.hints.RewardName.label}" id="c8"
+                               width="250">
+                        <af:inputListOfValues id="rewardNameId"
+                                              popupTitle="Search and Select: #{bindings.GamActionsVO.hints.RewardName.label}"
+                                              value="#{row.bindings.RewardName.inputValue}"
+                                              model="#{row.bindings.RewardName.listOfValuesModel}"
+                                              required="#{bindings.GamActionsVO.hints.RewardName.mandatory}"
+                                              shortDesc="#{bindings.GamActionsVO.hints.RewardName.tooltip}">
+                            <f:validator binding="#{row.bindings.RewardName.validator}"/>
+                        </af:inputListOfValues>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </af:panelBox>
+    </af:panelGroupLayout>
+</ui:composition>

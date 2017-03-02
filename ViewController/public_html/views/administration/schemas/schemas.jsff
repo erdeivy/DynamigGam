@@ -28,6 +28,9 @@
                       filterModel="#{bindings.GamSchemasVOQuery.queryDescriptor}"
                       queryListener="#{bindings.GamSchemasVOQuery.processQuery}" varStatus="vs" id="t1"
                       columnStretching="column:c1" partialTriggers="::b2 b3" editingMode="clickToEdit">
+                <af:column width="25" align="center" rowHeader="true" id="counter">
+                    <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                </af:column>
                 <af:column sortProperty="#{bindings.GamSchemasVO.hints.SchemaName.name}" filterable="true"
                            sortable="true" headerText="#{bindings.GamSchemasVO.hints.SchemaName.label}" id="c1">
                     <af:inputText value="#{row.bindings.SchemaName.inputValue}"
@@ -41,10 +44,16 @@
                     </af:inputText>
                 </af:column>
                 <af:column headerText="#{viewcontrollerBundle.EDIT_TABLES}" id="c2" width="70" align="center">
-                    <af:link shortDesc="#{viewcontrollerBundle.EDIT_TABLES}" action="goTables" id="b1" icon="/icons/edit.png"/>
+                    <af:link shortDesc="#{viewcontrollerBundle.EDIT_TABLES}" action="goTables" id="b1"
+                             icon="/icons/edit.png"/>
                 </af:column>
                 <af:column headerText="#{viewcontrollerBundle.SET_ROLES}" id="c4" width="70" align="center">
-                    <af:link shortDesc="#{viewcontrollerBundle.SET_ROLES}" action="goSchemaRoles" id="l1" icon="/icons/user.png"/>
+                    <af:link shortDesc="#{viewcontrollerBundle.SET_ROLES}" action="goSchemaRoles" id="l1"
+                             icon="/icons/user.png"/>
+                </af:column>
+                <af:column headerText="#{viewcontrollerBundle.STRATEGIES}" id="c5" width="70" align="center">
+                    <af:link shortDesc="#{viewcontrollerBundle.STRATEGIES}" action="goStrategies" id="l2"
+                             icon="/icons/chess.png"/>
                 </af:column>
                 <af:column headerText="#{viewcontrollerBundle.DELETE}" id="c3" width="50" align="center">
                     <af:link actionListener="#{bindings.Delete.execute}" shortDesc="#{viewcontrollerBundle.DELETE}"

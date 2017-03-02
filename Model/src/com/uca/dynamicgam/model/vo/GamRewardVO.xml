@@ -13,6 +13,10 @@
   CustomQuery="false"
   SelectAllAttributes="false"
   PageIterMode="Full">
+  <Variable
+    Name="bind_idReward"
+    Kind="viewcriteria"
+    Type="java.lang.Long"/>
   <EntityUsage
     Name="GamRewardEO"
     Entity="com.uca.dynamicgam.model.eo.GamRewardEO"/>
@@ -96,6 +100,84 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewCriteria
+    Name="GamRewardVC"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardVO"
+    Conjunction="AND"
+    Mode="3">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamRewardVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="RewardName"
+        ViewAttribute="RewardName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="GamRewardVOCriteria_GamRewardVOCriteria_row_0_Description"
+        ViewAttribute="Description"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="GamRewardByPkVC"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardVO"
+    Conjunction="AND"
+    Mode="3">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamRewardVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="IdReward"
+        ViewAttribute="IdReward"
+        Operator="="
+        Conjunction="AND"
+        Value=":bind_idReward"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>

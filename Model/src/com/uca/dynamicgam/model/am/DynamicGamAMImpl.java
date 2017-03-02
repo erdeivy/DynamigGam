@@ -312,4 +312,36 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
     public ViewObjectImpl getGamRewardVO() {
         return (ViewObjectImpl) findViewObject("GamRewardVO");
     }
+
+    /**
+     * Container's getter for GamStrategy1.
+     * @return GamStrategy1
+     */
+    public ViewObjectImpl getGamStrategyVO() {
+        return (ViewObjectImpl) findViewObject("GamStrategyVO");
+    }
+
+    /**
+     * Container's getter for GamSchemaStrategyVL1.
+     * @return GamSchemaStrategyVL1
+     */
+    public ViewLinkImpl getGamSchemaStrategyVL1() {
+        return (ViewLinkImpl) findViewLink("GamSchemaStrategyVL1");
+    }
+
+    /**
+     * Container's getter for GamActions1.
+     * @return GamActions1
+     */
+    public ViewObjectImpl getGamActionsVO() {
+        return (ViewObjectImpl) findViewObject("GamActionsVO");
+    }
+
+    /**
+     * Container's getter for GamStrategyActionsVL1.
+     * @return GamStrategyActionsVL1
+     */
+    public ViewLinkImpl getGamStrategyActionsVL1() {
+        return (ViewLinkImpl) findViewLink("GamStrategyActionsVL1");
+    }
 }

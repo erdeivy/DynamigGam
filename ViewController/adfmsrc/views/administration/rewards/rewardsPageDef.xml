@@ -15,7 +15,7 @@
           <Item Value="RewardName"/>
           <Item Value="Description"/>
           <Item Value="Image"/>
-          <Item Value="Quantifiable"/>
+          <Item Value="Quantifiable" Binds="Quantifiable"/>
           <Item Value="Weight"/>
         </AttrNames>
       </nodeDefinition>
@@ -24,5 +24,14 @@
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="DynamicGamAMDataControl"/>
     <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
             DataControl="DynamicGamAMDataControl"/>
+    <button IterBinding="GamRewardVOIterator" StaticList="true" id="Quantifiable">
+      <AttrNames>
+        <Item Value="Quantifiable"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
   </bindings>
 </pageDefinition>

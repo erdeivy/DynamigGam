@@ -19,6 +19,9 @@
         <view id="schemaRoles">
             <page>/views/administration/schemas/schemaRoles.jsff</page>
         </view>
+        <view id="strategies">
+            <page>/views/administration/schemas/strategies/strategies.jsff</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>schemas</from-activity-id>
             <control-flow-case id="__2">
@@ -28,6 +31,10 @@
             <control-flow-case id="__5">
                 <from-outcome>goSchemaRoles</from-outcome>
                 <to-activity-id>schemaRoles</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__4">
+                <from-outcome>goStrategies</from-outcome>
+                <to-activity-id>strategies</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__6">

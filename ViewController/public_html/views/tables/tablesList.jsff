@@ -14,8 +14,11 @@
                       selectionListener="#{bindings.AllTablesVO.collectionModel.makeCurrent}" rowSelection="single"
                       fetchSize="#{bindings.AllTablesVO.rangeSize}"
                       filterModel="#{bindings.AllTablesVOQuery.queryDescriptor}"
-                      queryListener="#{bindings.AllTablesVOQuery.processQuery}" varStatus="vs"
-                      id="t1" columnStretching="column:c2">
+                      queryListener="#{bindings.AllTablesVOQuery.processQuery}" varStatus="vs" id="t1"
+                      columnStretching="column:c2">
+                <af:column width="25" align="center" rowHeader="true" id="counter">
+                    <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                </af:column>
                 <af:column sortProperty="#{bindings.AllTablesVO.hints.Schema.name}" filterable="true" sortable="true"
                            headerText="#{bindings.AllTablesVO.hints.Schema.label}" id="c1">
                     <af:outputText value="#{row.Schema}" shortDesc="#{bindings.AllTablesVO.hints.Schema.tooltip}"

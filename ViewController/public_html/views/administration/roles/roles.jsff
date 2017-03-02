@@ -32,6 +32,9 @@
                           filterModel="#{bindings.GamRolesVOQuery.queryDescriptor}"
                           queryListener="#{bindings.GamRolesVOQuery.processQuery}" varStatus="vs" id="t1"
                           partialTriggers="::b1 ::b2" columnStretching="column:c1">
+                    <af:column width="25" align="center" rowHeader="true" id="counter">
+                        <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                    </af:column>
                     <af:column sortProperty="#{bindings.GamRolesVO.hints.RoleName.name}" filterable="true"
                                sortable="true" headerText="#{bindings.GamRolesVO.hints.RoleName.label}" id="c1">
                         <af:inputText value="#{row.bindings.RoleName.inputValue}"

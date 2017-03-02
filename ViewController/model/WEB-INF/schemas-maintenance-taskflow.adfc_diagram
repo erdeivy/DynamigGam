@@ -17,9 +17,9 @@
       <property
          name="y">140.94824</property>
       <property
-         name="x">197.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">197.0</property>
    </View>
    <View
       id="View3">
@@ -34,9 +34,9 @@
       <property
          name="y">56.597656</property>
       <property
-         name="x">514.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">514.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -71,9 +71,9 @@
       <property
          name="y">225.24707</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">508.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -94,4 +94,31 @@
       <property
          name="x">101.0</property>
    </WildcardControlFlowRule>
+   <View
+      id="View9">
+      <property
+         name="activityId">strategies</property>
+      <property
+         name="page">/views/administration/schemas/strategies/strategies.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>strategies&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">406.09766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">495.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="View2"
+      to="View9">
+      <property
+         name="fromOutcome">goStrategies</property>
+      <property
+         name="sdm:polyPoints">B56,200.5,194.59766,454.5,405.74707,L50</property>
+   </ControlFlowCase>
 </SDM>

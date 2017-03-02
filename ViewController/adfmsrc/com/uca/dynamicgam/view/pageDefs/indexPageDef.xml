@@ -8,5 +8,8 @@
               taskFlowId="#{backingBeanScope.MenuBean.taskFlowId}" activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <action id="Rollback" DataControl="DynamicGamAMDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+  </bindings>
 </pageDefinition>

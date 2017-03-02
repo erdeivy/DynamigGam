@@ -32,6 +32,9 @@
                           queryListener="#{bindings.GamTablesVOQuery.processQuery}" varStatus="vs" id="t1"
                           columnStretching="column:c1" partialTriggers="::b4 ::b9 :::pc2:b2 :::pc2:b7"
                           editingMode="clickToEdit">
+                    <af:column width="25" align="center" rowHeader="true" id="counter">
+                        <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                    </af:column>
                     <af:column sortProperty="#{bindings.GamTablesVO.hints.TableName.name}" filterable="true"
                                sortable="true" headerText="#{bindings.GamTablesVO.hints.TableName.label}" id="c1">
                         <af:inputText value="#{row.bindings.TableName.inputValue}"
@@ -66,7 +69,7 @@
                             <af:resetActionListener/>
                         </af:button>
                         <af:button icon="/icons/back.png" actionListener="#{bindings.Rollback.execute}"
-                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" id="b1" action="goBack"/>
+                                   text="#{viewcontrollerBundle.BACK_LABEL}" immediate="true" id="b10" action="goBack"/>
                     </af:toolbar>
                 </f:facet>
                 <f:facet name="statusbar"/>
@@ -79,6 +82,9 @@
                           filterModel="#{bindings.GamColumnsVOQuery.queryDescriptor}"
                           queryListener="#{bindings.GamColumnsVOQuery.processQuery}" varStatus="vs" id="t2"
                           partialTriggers="::b2 ::b7 :::pc1:b4 :::pc1:b9" editingMode="clickToEdit">
+                    <af:column width="25" align="center" rowHeader="true" id="c5">
+                        <af:outputText value="#{vs.index+1}" id="ot1"/>
+                    </af:column>
                     <af:column sortProperty="#{bindings.GamColumnsVO.hints.ColumnName.name}" filterable="true"
                                sortable="true" headerText="#{bindings.GamColumnsVO.hints.ColumnName.label}" id="c3">
                         <af:inputText value="#{row.bindings.ColumnName.inputValue}"

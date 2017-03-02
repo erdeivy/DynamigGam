@@ -4,7 +4,16 @@
     <af:document title="Dynamic Gamification" id="d1" styleClass="mainPsl">
         <af:form id="f1">
             <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.MenuBean.pslMain}" styleClass="mainPsl">
-                <f:facet name="bottom"/>
+                <f:facet name="bottom">
+                    <af:popup binding="#{backingBeanScope.MenuBean.pendingChangesPopup}" id="p1">
+                        <af:dialog title="Pending changes" type="yesNo" id="d2"
+                                   dialogListener="#{backingBeanScope.MenuBean.pendingChangesListener}">
+                            <af:message messageType="warning"
+                                        message="You have pending changes in this screen. Do you want to cancel these changes and navigate?"
+                                        id="m3"/>
+                        </af:dialog>
+                    </af:popup>
+                </f:facet>
                 <f:facet name="center">
                     <af:region value="#{bindings.dynamictf.regionModel}" id="r1"/>
                 </f:facet>
@@ -16,16 +25,16 @@
                             <af:commandMenuItem text="Welcome" id="cmi2"
                                                 action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
                             <af:menu text="Administration" id="m2">
-                                <af:commandMenuItem text="Schemas" id="cmi1"
+                                <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
                                                     action="#{backingBeanScope.MenuBean.goSchemasAction}"/>
-                                <af:commandMenuItem text="Users" id="cmi4"
+                                <af:commandMenuItem text="Users" id="cmi4" immediate="true"
                                                     action="#{backingBeanScope.MenuBean.goUsersAction}"/>
-                                <af:commandMenuItem text="Roles" id="cmi5"
+                                <af:commandMenuItem text="Roles" id="cmi5" immediate="true"
                                                     action="#{backingBeanScope.MenuBean.goRolesAction}"/>
-                                <af:commandMenuItem text="Rewards" id="cmi3"
+                                <af:commandMenuItem text="Rewards" id="cmi3" immediate="true"
                                                     action="#{backingBeanScope.MenuBean.goRewardsAction}"/>
                             </af:menu>
-                            <af:commandMenuItem text="Tables" id="cmi6"
+                            <af:commandMenuItem text="Tables" id="cmi6" immediate="true"
                                                 action="#{backingBeanScope.MenuBean.goViewTablesAction}"/>
                         </af:menu>
                     </af:menuBar>

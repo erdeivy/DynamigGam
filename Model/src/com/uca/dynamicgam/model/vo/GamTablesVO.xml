@@ -38,7 +38,8 @@
     PrecisionRule="true"
     EntityAttrName="TableName"
     EntityUsage="GamTablesEO"
-    AliasName="TABLE_NAME">
+    AliasName="TABLE_NAME"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -52,7 +53,8 @@
     PrecisionRule="true"
     EntityAttrName="Schema"
     EntityUsage="GamTablesEO"
-    AliasName="SCHEMA">
+    AliasName="SCHEMA"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -95,6 +97,43 @@
         UpperColumns="0"
         IsBindVarValue="true"
         Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Schema"
+        ViewAttribute="Schema"
+        Operator="="
+        Conjunction="AND"
+        Value=":bind_schema"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FindBySchemaVC"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamTablesVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamTablesVOCriteria1_row_0"
+      UpperColumns="1">
       <ViewCriteriaItem
         Name="Schema"
         ViewAttribute="Schema"

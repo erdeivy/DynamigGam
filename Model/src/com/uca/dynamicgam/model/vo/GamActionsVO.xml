@@ -16,7 +16,17 @@
   <ViewAccessor
     Name="GamTablesVO1"
     ViewObjectName="com.uca.dynamicgam.model.vo.GamTablesVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FindBySchemaVC"
+      FullName="com.uca.dynamicgam.model.vo.GamTablesVO.FindBySchemaVC"/>
+    <ParameterMap>
+      <PIMap Variable="bind_schema">
+        <TransientExpression
+          trustMode="untrusted"><![CDATA[adf.object.GamStrategy?.SchemaName]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="OperationsLOV1"
     ViewObjectName="com.uca.dynamicgam.model.vo.lov.OperationsLOV"
@@ -35,6 +45,24 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="GamRewardVO1"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="GamRewardByPkVO"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="GamRewardByPkVC"
+      FullName="com.uca.dynamicgam.model.vo.GamRewardVO.GamRewardByPkVC"/>
+    <ParameterMap>
+      <PIMap Variable="bind_idReward">
+        <TransientExpression
+          trustMode="untrusted"><![CDATA[IdReward]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_TableName"
     ListVOName="GamTablesVO1"
@@ -49,7 +77,6 @@
       <Item Value="TableName"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="Schema"/>
       <Item Value="TableName"/>
     </AttrArray>
     <DisplayCriteria/>
@@ -91,6 +118,32 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_RewardName"
+    ListVOName="GamRewardVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RewardName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="IdReward"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RewardName"/>
+      <Item Value="IdReward"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RewardName"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="GamRewardVC"
+      Hint="showAndExecute"/>
+  </ListBinding>
   <EntityUsage
     Name="GamActionsEO"
     Entity="com.uca.dynamicgam.model.eo.GamActionsEO"/>
@@ -123,6 +176,8 @@
     LOVName="LOV_TableName">
     <Properties>
       <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamActionsVO.TableName_LABEL"/>
         <CONTROLTYPE
           Value="choice"/>
       </SchemaBasedProperties>
@@ -140,6 +195,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamActionsVO.Operation_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -154,6 +211,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamActionsVO.ColumnName_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
     <Dependencies>
@@ -167,12 +226,65 @@
     PrecisionRule="true"
     EntityAttrName="Repetitions"
     EntityUsage="GamActionsEO"
-    AliasName="REPETITIONS"/>
+    AliasName="REPETITIONS"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamActionsVO.Repetitions_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="IdReward"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="IdReward"
     EntityUsage="GamActionsEO"
-    AliasName="ID_REWARD"/>
+    AliasName="ID_REWARD"
+    LOVName="LOV_RewardName">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamActionsVO.IdReward_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RewardName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_RewardName"
+    IsNotNull="true">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[adf.object.GamRewardByPkVO?.first()?.getAttribute('RewardName')]]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[false]]></RecalcCondition>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamActionsVO.RewardName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="GamStrategy"
+    ViewLink="com.uca.dynamicgam.model.vo.vl.GamStrategyActionsVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

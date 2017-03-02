@@ -25,8 +25,11 @@
                       selectionListener="#{bindings.DynamicCellsByRowVO.collectionModel.makeCurrent}"
                       rowSelection="single" fetchSize="#{bindings.DynamicCellsByRowVO.rangeSize}"
                       filterModel="#{bindings.DynamicCellsByRowVOQuery.queryDescriptor}"
-                      queryListener="#{bindings.DynamicCellsByRowVOQuery.processQuery}"
-                      varStatus="vs" id="t1" editingMode="clickToEdit" columnStretching="column:c2">
+                      queryListener="#{bindings.DynamicCellsByRowVOQuery.processQuery}" varStatus="vs" id="t1"
+                      editingMode="clickToEdit" columnStretching="column:c2">
+                <af:column width="25" align="center" rowHeader="true" id="counter">
+                    <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                </af:column>
                 <af:column sortProperty="#{bindings.DynamicCellsByRowVO.hints.ColumnName.name}" filterable="true"
                            sortable="true" headerText="#{bindings.DynamicCellsByRowVO.hints.ColumnName.label}" id="c1"
                            width="200">

@@ -20,9 +20,12 @@
                     </af:toolbar>
                 </f:facet>
                 <f:facet name="statusbar"/>
-                <af:table var="row" rowBandingInterval="0" id="t1"
+                <af:table var="row" rowBandingInterval="0" id="t1" varStatus="vs"
                           value="#{backingBeanScope.DynamicTableBean.tableContent}"
                           binding="#{backingBeanScope.DynamicTableBean.tableBinding}" columnStretching="multiple">
+                    <af:column width="25" align="center" rowHeader="true" id="counter">
+                        <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                    </af:column>
                     <af:forEach items="#{bindings.DynamicColumnsVO.allRowsInRange}" var="columna">
                         <af:column sortable="false" headerText="#{columna.columnName}" id="c1">
                             <af:outputText value="#{row[columna.columnName]}" id="ot2"/>

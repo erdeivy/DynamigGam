@@ -21,6 +21,8 @@
     <page path="/views/administration/schemas/schemaRoles.jsff" usageId="com_uca_dynamicgam_view_schemaRolesPageDef"/>
     <page path="/views/administration/users/userRoles.jsff" usageId="com_uca_dynamicgam_view_userRolesPageDef"/>
     <page path="/views/administration/rewards/rewards.jsff" usageId="com_uca_dynamicgam_view_rewardsPageDef"/>
+    <page path="/views/administration/schemas/strategies/strategies.jsff"
+          usageId="com_uca_dynamicgam_view_strategiesPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_uca_dynamicgam_view_schemasPageDef" path="views.schemasPageDef"/>
@@ -37,6 +39,8 @@
     <page id="com_uca_dynamicgam_view_schemaRolesPageDef" path="views.schemaRolesPageDef"/>
     <page id="com_uca_dynamicgam_view_userRolesPageDef" path="views.userRolesPageDef"/>
     <page id="com_uca_dynamicgam_view_rewardsPageDef" path="views.administration.rewards.rewardsPageDef"/>
+    <page id="com_uca_dynamicgam_view_strategiesPageDef"
+          path="views.administration.schemas.strategies.strategiesPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="DynamicGamAMDataControl" Package="com.uca.dynamicgam.model.am"
