@@ -85,6 +85,16 @@
    <ViewUsage
       Name="GamActionsVO"
       ViewObjectName="com.uca.dynamicgam.model.vo.GamActionsVO"/>
+   <ViewUsage
+      Name="TablesByUserVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.TablesByUserVO">
+      <ParameterMap>
+         <PIMap Variable="bind_user">
+            <TransientExpression
+               trustMode="untrusted"><![CDATA[adf.context.securityContext.getUserName()]]></TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewUsage>
    <ViewLinkUsage
       Name="GamTablasFkVL1"
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"

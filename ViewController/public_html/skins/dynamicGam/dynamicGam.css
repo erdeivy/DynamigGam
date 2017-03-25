@@ -6,3 +6,13 @@
 .mainPsl {
   background-color: White;
 }
+
+.loginPgl {
+  background-color: White;  
+  font-family: 'Montserrat', sans-serif;
+}
+
+.loginPgl af|panelFormLayout table {
+  border: solid Gray thin;
+  padding: 5px;
+}

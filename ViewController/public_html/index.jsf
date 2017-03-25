@@ -20,24 +20,33 @@
                 <f:facet name="start"/>
                 <f:facet name="end"/>
                 <f:facet name="top">
-                    <af:menuBar id="mb1">
-                        <af:menu text="Menu" id="m1">
-                            <af:commandMenuItem text="Welcome" id="cmi2"
-                                                action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
-                            <af:menu text="Administration" id="m2">
-                                <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goSchemasAction}"/>
-                                <af:commandMenuItem text="Users" id="cmi4" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goUsersAction}"/>
-                                <af:commandMenuItem text="Roles" id="cmi5" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goRolesAction}"/>
-                                <af:commandMenuItem text="Rewards" id="cmi3" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goRewardsAction}"/>
+                    <af:toolbar id="t1" stretchId="s1">
+                        <af:menuBar id="mb1">
+                            <af:menu text="Menu" id="m1">
+                                <af:commandMenuItem text="Welcome" id="cmi2"
+                                                    action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
+                                <af:menu text="Administration" id="m2"
+                                         rendered="#{securityContext.userInRole['ROL_ADMIN']}">
+                                    <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
+                                                        action="#{backingBeanScope.MenuBean.goSchemasAction}"/>
+                                    <af:commandMenuItem text="Users" id="cmi4" immediate="true"
+                                                        action="#{backingBeanScope.MenuBean.goUsersAction}"/>
+                                    <af:commandMenuItem text="Roles" id="cmi5" immediate="true"
+                                                        action="#{backingBeanScope.MenuBean.goRolesAction}"/>
+                                    <af:commandMenuItem text="Rewards" id="cmi3" immediate="true"
+                                                        action="#{backingBeanScope.MenuBean.goRewardsAction}"/>
+                                </af:menu>
+                                <af:commandMenuItem text="Tables" id="cmi6" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goViewTablesAction}"/>
+                                <af:commandMenuItem text="Logout" id="cmi7" immediate="true"
+                                                    action="#{backingBeanScope.LoginBean.logoutAction}"/>
                             </af:menu>
-                            <af:commandMenuItem text="Tables" id="cmi6" immediate="true"
-                                                action="#{backingBeanScope.MenuBean.goViewTablesAction}"/>
-                        </af:menu>
-                    </af:menuBar>
+                        </af:menuBar>
+                        <af:spacer clientComponent="true" id="s1"/>
+                        <b>User: </b>
+                        <af:spacer id="s2" width="3"/>
+                        <af:outputText value="#{securityContext.userName}" id="ot1"/>
+                    </af:toolbar>
                 </f:facet>
             </af:panelStretchLayout>
         </af:form>

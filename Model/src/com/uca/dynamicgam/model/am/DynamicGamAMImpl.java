@@ -344,4 +344,12 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
     public ViewLinkImpl getGamStrategyActionsVL1() {
         return (ViewLinkImpl) findViewLink("GamStrategyActionsVL1");
     }
+
+    /**
+     * Container's getter for TablesByUser1.
+     * @return TablesByUser1
+     */
+    public ViewObjectImpl getTablesByUserVO() {
+        return (ViewObjectImpl) findViewObject("TablesByUserVO");
+    }
 }

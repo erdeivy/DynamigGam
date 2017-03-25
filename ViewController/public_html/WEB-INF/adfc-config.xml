@@ -5,4 +5,9 @@
         <managed-bean-class>com.uca.dynamicgam.view.beans.MenuBean</managed-bean-class>
         <managed-bean-scope>backingBean</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__2">
+        <managed-bean-name>LoginBean</managed-bean-name>
+        <managed-bean-class>com.uca.dynamicgam.view.beans.login.LoginBean</managed-bean-class>
+        <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
 </adfc-config>

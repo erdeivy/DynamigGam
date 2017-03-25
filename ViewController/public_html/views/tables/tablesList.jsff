@@ -8,25 +8,25 @@
             <f:facet name="menus"/>
             <f:facet name="toolbar"/>
             <f:facet name="statusbar"/>
-            <af:table value="#{bindings.AllTablesVO.collectionModel}" var="row" rows="#{bindings.AllTablesVO.rangeSize}"
-                      emptyText="#{bindings.AllTablesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
-                      rowBandingInterval="0" selectedRowKeys="#{bindings.AllTablesVO.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.AllTablesVO.collectionModel.makeCurrent}" rowSelection="single"
-                      fetchSize="#{bindings.AllTablesVO.rangeSize}"
-                      filterModel="#{bindings.AllTablesVOQuery.queryDescriptor}"
-                      queryListener="#{bindings.AllTablesVOQuery.processQuery}" varStatus="vs" id="t1"
+            <af:table value="#{bindings.TablesByUserVO.collectionModel}" var="row" rows="#{bindings.TablesByUserVO.rangeSize}"
+                      emptyText="#{bindings.TablesByUserVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.TablesByUserVO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.TablesByUserVO.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.TablesByUserVO.rangeSize}"
+                      filterModel="#{bindings.TablesByUserVOQuery.queryDescriptor}"
+                      queryListener="#{bindings.TablesByUserVOQuery.processQuery}" varStatus="vs" id="t1"
                       columnStretching="column:c2">
                 <af:column width="25" align="center" rowHeader="true" id="counter">
                     <af:outputText value="#{vs.index+1}" id="otCounter"/>
                 </af:column>
-                <af:column sortProperty="#{bindings.AllTablesVO.hints.Schema.name}" filterable="true" sortable="true"
-                           headerText="#{bindings.AllTablesVO.hints.Schema.label}" id="c1">
-                    <af:outputText value="#{row.Schema}" shortDesc="#{bindings.AllTablesVO.hints.Schema.tooltip}"
+                <af:column sortProperty="#{bindings.TablesByUserVO.hints.Schema.name}" filterable="true" sortable="true"
+                           headerText="#{bindings.TablesByUserVO.hints.Schema.label}" id="c1">
+                    <af:outputText value="#{row.Schema}" shortDesc="#{bindings.TablesByUserVO.hints.Schema.tooltip}"
                                    id="ot1"/>
                 </af:column>
-                <af:column sortProperty="#{bindings.AllTablesVO.hints.TableName.name}" filterable="true" sortable="true"
-                           headerText="#{bindings.AllTablesVO.hints.TableName.label}" id="c2">
-                    <af:outputText value="#{row.TableName}" shortDesc="#{bindings.AllTablesVO.hints.TableName.tooltip}"
+                <af:column sortProperty="#{bindings.TablesByUserVO.hints.TableName.name}" filterable="true" sortable="true"
+                           headerText="#{bindings.TablesByUserVO.hints.TableName.label}" id="c2">
+                    <af:outputText value="#{row.TableName}" shortDesc="#{bindings.TablesByUserVO.hints.TableName.tooltip}"
                                    id="ot2"/>
                 </af:column>
                 <af:column headerText="#{viewcontrollerBundle.VIEW}" id="c3" align="center" width="50">
