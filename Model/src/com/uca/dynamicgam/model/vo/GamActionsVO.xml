@@ -283,6 +283,11 @@
     Type="oracle.jbo.Row"
     Reversed="true"
     IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="GamRewardsStats"
+    ViewLink="com.uca.dynamicgam.model.vo.vl.GamRewardsStatsFk2VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>

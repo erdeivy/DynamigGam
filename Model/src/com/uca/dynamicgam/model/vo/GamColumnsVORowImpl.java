@@ -1,5 +1,6 @@
 package com.uca.dynamicgam.model.vo;
 
+import oracle.jbo.RowIterator;
 import oracle.jbo.server.EntityImpl;
 import oracle.jbo.server.ViewRowImpl;
 // ---------------------------------------------------------------------
@@ -9,6 +10,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class GamColumnsVORowImpl extends ViewRowImpl {
+
     public static final int ENTITY_GAMCOLUMNSEO = 0;
 
     /**
@@ -16,8 +18,10 @@ public class GamColumnsVORowImpl extends ViewRowImpl {
      */
     public enum AttributesEnum {
         ColumnName,
-        TableName;
-        private static AttributesEnum[] vals = null;
+        TableName,
+        GamHistory;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -39,8 +43,10 @@ public class GamColumnsVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int COLUMNNAME = AttributesEnum.ColumnName.index();
     public static final int TABLENAME = AttributesEnum.TableName.index();
+    public static final int GAMHISTORY = AttributesEnum.GamHistory.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -86,6 +92,13 @@ public class GamColumnsVORowImpl extends ViewRowImpl {
      */
     public void setTableName(String value) {
         setAttributeInternal(TABLENAME, value);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link GamHistory.
+     */
+    public RowIterator getGamHistory() {
+        return (RowIterator) getAttributeInternal(GAMHISTORY);
     }
 }
 

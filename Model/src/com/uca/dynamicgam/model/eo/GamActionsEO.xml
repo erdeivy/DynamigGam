@@ -110,6 +110,20 @@
     AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk3AS.GamActions"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamRewardsStats"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS.GamRewardsStats"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS.GamActions"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamReward"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS.GamReward"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS.GamActions"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="GamActionsPk"
     PrimaryKey="true">

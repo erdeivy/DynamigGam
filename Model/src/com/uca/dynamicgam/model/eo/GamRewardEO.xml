@@ -82,6 +82,13 @@
     ColumnType="NUMBER"
     TableName="GAM_REWARD"
     Precision="2"/>
+  <AccessorAttribute
+    Name="GamActions"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS.GamActions"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS.GamReward"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
   <Key
     Name="GamRewardPk"
     PrimaryKey="true">

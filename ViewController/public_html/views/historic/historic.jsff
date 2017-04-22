@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelHeader text="#{viewcontrollerBundle.ACTIONS_HISTORIC}" id="ph1">
+            <af:query id="qryId1" headerText="#{viewcontrollerBundle.SEARCH}" disclosed="true"
+                      value="#{bindings.SearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SearchCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SearchCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SearchCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:resId1" rows="3" maxColumns="3"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <af:table value="#{bindings.GamHistoryVO.collectionModel}" var="row"
+                      rows="#{bindings.GamHistoryVO.rangeSize}"
+                      emptyText="#{bindings.GamHistoryVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.GamHistoryVO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.GamHistoryVO.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.GamHistoryVO.rangeSize}" columnStretching="column:resId1c1"
+                      filterModel="#{bindings.SearchCriteriaQuery.queryDescriptor}"
+                      queryListener="#{bindings.SearchCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
+                      scrollPolicy="page">
+                <af:column width="25" align="center" rowHeader="true" id="counter" sortable="true" filterable="true">
+                    <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.HistoryTs.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamHistoryVO.hints.HistoryTs.label}" id="resId1c3">
+                    <af:outputText value="#{row.HistoryTs}" shortDesc="#{bindings.GamHistoryVO.hints.HistoryTs.tooltip}"
+                                   id="ot3">
+                        <af:convertDateTime pattern="#{bindings.GamHistoryVO.hints.HistoryTs.format}"/>
+                    </af:outputText>
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.SearchCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.HistoryTs.value}"
+                                      id="id1">
+                            <af:convertDateTime pattern="#{bindings.GamHistoryVO.hints.HistoryTs.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.UserId.name}" filterable="true" sortable="true"
+                           headerText="#{bindings.GamHistoryVO.hints.UserId.label}" id="resId1c1">
+                    <af:selectOneChoice value="#{row.bindings.UserId.inputValue}" label="#{row.bindings.UserId.label}"
+                                        required="#{bindings.GamHistoryVO.hints.UserId.mandatory}"
+                                        shortDesc="#{bindings.GamHistoryVO.hints.UserId.tooltip}" readOnly="true"
+                                        id="soc1">
+                        <f:selectItems value="#{row.bindings.UserId.items}" id="si1"/>
+                        <f:validator binding="#{row.bindings.UserId.validator}"/>
+                    </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.Operation.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamHistoryVO.hints.Operation.label}" id="resId1c2"
+                           width="75">
+                    <af:outputText value="#{row.Operation}" shortDesc="#{bindings.GamHistoryVO.hints.Operation.tooltip}"
+                                   id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.TableName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamHistoryVO.hints.TableName.label}" id="resId1c4"
+                           width="125">
+                    <af:outputText value="#{row.TableName}" shortDesc="#{bindings.GamHistoryVO.hints.TableName.tooltip}"
+                                   id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.ColumnName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamHistoryVO.hints.ColumnName.label}" id="resId1c5"
+                           width="125">
+                    <af:outputText value="#{row.ColumnName}"
+                                   shortDesc="#{bindings.GamHistoryVO.hints.ColumnName.tooltip}" id="ot5"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.Rewarded.name}" filterable="true" sortable="true"
+                           headerText="#{bindings.GamHistoryVO.hints.Rewarded.label}" id="resId1c6" width="75">
+                    <af:selectOneChoice value="#{row.bindings.Rewarded.inputValue}"
+                                        label="#{row.bindings.Rewarded.label}"
+                                        required="#{bindings.GamHistoryVO.hints.Rewarded.mandatory}"
+                                        shortDesc="#{bindings.GamHistoryVO.hints.Rewarded.tooltip}" readOnly="true"
+                                        id="soc2">
+                        <f:selectItems value="#{row.bindings.Rewarded.items}" id="si2"/>
+                        <f:validator binding="#{row.bindings.Rewarded.validator}"/>
+                    </af:selectOneChoice>
+                </af:column>
+            </af:table>
+        </af:panelCollection>
+    </af:panelGroupLayout>
+</ui:composition>

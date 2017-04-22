@@ -13,6 +13,14 @@
   CustomQuery="false"
   SelectAllAttributes="false"
   PageIterMode="Full">
+  <Variable
+    Name="bind_user"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <TransientExpression
+      trustMode="untrusted"
+      Name="expression"><![CDATA[adf.context.securityContext.getUserName()]]></TransientExpression>
+  </Variable>
   <EntityUsage
     Name="GamUsersEO"
     Entity="com.uca.dynamicgam.model.eo.GamUsersEO"/>
@@ -22,7 +30,8 @@
     PrecisionRule="true"
     EntityAttrName="UserId"
     EntityUsage="GamUsersEO"
-    AliasName="USER_ID">
+    AliasName="USER_ID"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -72,9 +81,71 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="FullDescription"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[Name + ' ' + Lastname + ' (' + UserId + ')']]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="FilterByUserIDVC"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamUsersVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamUsersVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UserId"
+        ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bind_user"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="GamUserRole"
     ViewLink="com.uca.dynamicgam.model.vo.vl.GamUserRoleUsersFkVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="GamHistory"
+    ViewLink="com.uca.dynamicgam.model.vo.vl.GamHistoryUsersFkVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="GamRewardsStats"
+    ViewLink="com.uca.dynamicgam.model.vo.vl.GamRewardsStatsFk1VL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ResourceBundle>

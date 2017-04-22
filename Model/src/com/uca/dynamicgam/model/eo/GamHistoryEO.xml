@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamHistoryEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_HISTORY"
+  AliasName="GamHistoryEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="IdHistory"
+    IsUpdateable="false"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_HISTORY"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_HISTORY"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="UserId"
+    IsUpdateable="false"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="USER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Operation"
+    IsUpdateable="false"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="OPERATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HistoryTs"
+    IsUpdateable="false"
+    IsNotNull="true"
+    ColumnName="HISTORY_TS"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="GAM_HISTORY"/>
+  <Attribute
+    Name="TableName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="TABLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ColumnName"
+    IsUpdateable="false"
+    Precision="50"
+    ColumnName="COLUMN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Rewarded"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="REWARDED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="GamTables"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamHistoryTablesFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryTablesFkAS.GamTables"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryTablesFkAS.GamHistory"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamColumns"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamHistoryColumnsFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryColumnsFkAS.GamColumns"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryColumnsFkAS.GamHistory"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamUsers"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamHistoryUsersFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryUsersFkAS.GamUsers"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryUsersFkAS.GamHistory"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GamHistoryPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_HISTORY_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamHistoryEO.IdHistory"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamHistoryColumnsFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_COLUMNAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_HISTORY_COLUMNS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamHistoryEO.ColumnName"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamHistoryEO.TableName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamHistoryTablesFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_TABLAS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_HISTORY_TABLES_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamHistoryEO.TableName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamHistoryUsersFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_USERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_HISTORY_USERS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamHistoryEO.UserId"/>
+    </AttrArray>
+  </Key>
+</Entity>

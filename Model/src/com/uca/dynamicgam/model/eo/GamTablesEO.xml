@@ -67,6 +67,13 @@
     AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk2AS.GamTables"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamHistory"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamHistoryTablesFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryTablesFkAS.GamHistory"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryTablesFkAS.GamTables"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="GamTablasPk"
     PrimaryKey="true">

@@ -71,6 +71,20 @@
     AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamUserRoleUsersFkAS.GamUsers"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamHistory"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamHistoryUsersFkAS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryUsersFkAS.GamHistory"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamHistoryUsersFkAS.GamUsers"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GamRewardsStats"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk1AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk1AS.GamRewardsStats"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk1AS.GamUsers"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="GamUsersPk"
     PrimaryKey="true">

@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <af:document title="Dynamic Gamification" id="d1" styleClass="mainPsl">
+        <af:messages id="m1"/>
         <af:form id="f1">
-            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.MenuBean.pslMain}" styleClass="mainPsl">
+            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.MenuBean.pslMain}" styleClass="mainPsl"
+                                   bottomHeight="0px">
                 <f:facet name="bottom">
                     <af:popup binding="#{backingBeanScope.MenuBean.pendingChangesPopup}" id="p1">
                         <af:dialog title="Pending changes" type="yesNo" id="d2"
@@ -15,37 +17,48 @@
                     </af:popup>
                 </f:facet>
                 <f:facet name="center">
-                    <af:region value="#{bindings.dynamictf.regionModel}" id="r1"/>
+                    <af:region value="#{bindings.dynamictf.regionModel}" id="r1" styleClass="shadowBox"/>
                 </f:facet>
                 <f:facet name="start"/>
                 <f:facet name="end"/>
                 <f:facet name="top">
-                    <af:toolbar id="t1" stretchId="s1">
-                        <af:menuBar id="mb1">
-                            <af:menu text="Menu" id="m1">
-                                <af:commandMenuItem text="Welcome" id="cmi2"
-                                                    action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
-                                <af:menu text="Administration" id="m2"
-                                         rendered="#{securityContext.userInRole['ROL_ADMIN']}">
-                                    <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
-                                                        action="#{backingBeanScope.MenuBean.goSchemasAction}"/>
-                                    <af:commandMenuItem text="Users" id="cmi4" immediate="true"
-                                                        action="#{backingBeanScope.MenuBean.goUsersAction}"/>
-                                    <af:commandMenuItem text="Roles" id="cmi5" immediate="true"
-                                                        action="#{backingBeanScope.MenuBean.goRolesAction}"/>
-                                    <af:commandMenuItem text="Rewards" id="cmi3" immediate="true"
-                                                        action="#{backingBeanScope.MenuBean.goRewardsAction}"/>
-                                </af:menu>
-                                <af:commandMenuItem text="Tables" id="cmi6" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goViewTablesAction}"/>
-                                <af:commandMenuItem text="Logout" id="cmi7" immediate="true"
-                                                    action="#{backingBeanScope.LoginBean.logoutAction}"/>
+                    <af:toolbar id="t1" stretchId="s1" styleClass="blueMenu">
+                        <af:menuBar id="mb1" stretchId="s1" styleClass="">
+                            <af:commandMenuItem text="Dynamic Gamification" id="cmi2" styleClass="highlightedCmi"
+                                                action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
+                            <af:menu text="Administration" id="m2" icon="/icons/admin.png"
+                                     rendered="#{securityContext.userInRole['ROL_ADMIN']}">
+                                <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goSchemasAction}"
+                                                    icon="/icons/database.png"/>
+                                <af:commandMenuItem text="Users" id="cmi4" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goUsersAction}"
+                                                    icon="/icons/user.png"/>
+                                <af:commandMenuItem text="Roles" id="cmi5" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goRolesAction}"
+                                                    icon="/icons/keys.png"/>
+                                <af:commandMenuItem text="Rewards" id="cmi3" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goRewardsAction}"
+                                                    icon="/icons/medal.png"/>
                             </af:menu>
-                        </af:menuBar>
+                            <af:commandMenuItem text="Data maintenance" id="cmi6" immediate="true"
+                                                action="#{backingBeanScope.MenuBean.goViewTablesAction}"
+                                                icon="/icons/pencil.png"/>
+                            <af:commandMenuItem text="Actions Historic" id="cmi8" immediate="true"
+                                                action="#{backingBeanScope.MenuBean.goHistoricAction}"
+                                                icon="/icons/calendar.png"/>
+                            <af:commandMenuItem text="Rewards Statistics" id="cmi9" immediate="true"
+                                                action="#{backingBeanScope.MenuBean.goRewardsStatsAction}"
+                                                icon="/icons/medal.png"/>
                         <af:spacer clientComponent="true" id="s1"/>
-                        <b>User: </b>
-                        <af:spacer id="s2" width="3"/>
-                        <af:outputText value="#{securityContext.userName}" id="ot1"/>
+                        <af:menu text="#{bindings.FullDescription.inputValue}" id="cmi10" icon="/icons/user.png">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            <af:commandMenuItem text="Logout" id="cmi11" immediate="true"
+                                                action="#{backingBeanScope.LoginBean.logoutAction}"
+                                                icon="/icons/exit.png"/>
+                        </af:menu>                            
+                        </af:menuBar>
+
                     </af:toolbar>
                 </f:facet>
             </af:panelStretchLayout>

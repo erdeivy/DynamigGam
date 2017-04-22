@@ -7,9 +7,15 @@
     <taskFlow id="dynamictf"
               taskFlowId="#{backingBeanScope.MenuBean.taskFlowId}" activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="LoggedUserVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="LoggedUserVOIterator"/>
   </executables>
   <bindings>
     <action id="Rollback" DataControl="DynamicGamAMDataControl" RequiresUpdateModel="false"
             Action="rollbackTransaction"/>
+    <attributeValues IterBinding="LoggedUserVOIterator" id="FullDescription">
+      <AttrNames>
+        <Item Value="FullDescription"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

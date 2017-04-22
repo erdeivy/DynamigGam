@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamRewardsStatsEO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="GAM_REWARDS_STATS"
+  AliasName="GamRewardsStatsEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="IdRewardsStats"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_REWARDS_STATS"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_REWARDS_STATS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="UserId"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="USER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_REWARDS_STATS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StatsTs"
+    IsNotNull="true"
+    ColumnName="STATS_TS"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="GAM_REWARDS_STATS"/>
+  <Attribute
+    Name="IdStrategy"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_STRATEGY"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_REWARDS_STATS"/>
+  <Attribute
+    Name="IdAction"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_ACTION"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="GAM_REWARDS_STATS"/>
+  <AccessorAttribute
+    Name="GamActions"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS.GamActions"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS.GamRewardsStats"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="GamUsers"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk1AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk1AS.GamUsers"
+    AssociationOtherEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk1AS.GamRewardsStats"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GamRewardsStatsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GAM_REWARDS_STATS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamRewardsStatsEO.IdRewardsStats"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamRewardsStatsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_USERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_REWARDS_STATS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamRewardsStatsEO.UserId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamRewardsStatsFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GAM_ACTIONS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_REWARDS_STATS_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamRewardsStatsEO.IdStrategy"/>
+      <Item Value="com.uca.dynamicgam.model.eo.GamRewardsStatsEO.IdAction"/>
+    </AttrArray>
+  </Key>
+</Entity>

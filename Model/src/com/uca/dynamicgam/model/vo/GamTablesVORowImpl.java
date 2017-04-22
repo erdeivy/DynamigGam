@@ -10,6 +10,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class GamTablesVORowImpl extends ViewRowImpl {
+
     public static final int ENTITY_GAMTABLESEO = 0;
 
     /**
@@ -19,8 +20,10 @@ public class GamTablesVORowImpl extends ViewRowImpl {
         TableName,
         Schema,
         GamColumns,
-        GamRows;
-        private static AttributesEnum[] vals = null;
+        GamRows,
+        GamHistory;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -42,10 +45,12 @@ public class GamTablesVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int TABLENAME = AttributesEnum.TableName.index();
     public static final int SCHEMA = AttributesEnum.Schema.index();
     public static final int GAMCOLUMNS = AttributesEnum.GamColumns.index();
     public static final int GAMROWS = AttributesEnum.GamRows.index();
+    public static final int GAMHISTORY = AttributesEnum.GamHistory.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -105,6 +110,13 @@ public class GamTablesVORowImpl extends ViewRowImpl {
      */
     public RowIterator getGamRows() {
         return (RowIterator) getAttributeInternal(GAMROWS);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link GamHistory.
+     */
+    public RowIterator getGamHistory() {
+        return (RowIterator) getAttributeInternal(GAMHISTORY);
     }
 }
 

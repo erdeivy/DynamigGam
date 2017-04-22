@@ -22,6 +22,8 @@ public class MenuBean {
     private final String ROLES_TF_URL = "/WEB-INF/roles-taskflow.xml#roles-taskflow";
     private final String USERS_TF_URL = "/WEB-INF/users-taskflow.xml#users-taskflow";
     private final String REWARDS_TF_URL = "/WEB-INF/rewards-taskflow.xml#rewards-taskflow";
+    private final String ACTIONS_HISTORIC_TF_URL = "/WEB-INF/actions-historic-taskflow.xml#actions-historic-taskflow";
+    private final String REWARDS_STATS_TF_URL = "/WEB-INF/rewards-stats-taskflow.xml#rewards-stats-taskflow";
     private static final String CURRENT_TF_KEY = "currentTf";
     private static final String NEXT_TF_KEY = "nextTf";
     private RichPopup pendingChangesPopup;
@@ -89,6 +91,16 @@ public class MenuBean {
 
     public String goRewardsAction() {
         goTaskFlow(REWARDS_TF_URL);
+        return null;
+    }
+
+    public String goRewardsStatsAction() {
+        goTaskFlow(REWARDS_STATS_TF_URL);
+        return null;
+    }
+
+    public String goHistoricAction() {
+        goTaskFlow(ACTIONS_HISTORIC_TF_URL);
         return null;
     }
 

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GamRewardsStatsVO"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="GamUsersVO"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamUsersVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_UserId"
+    ListVOName="GamUsersVO"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FullDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="GamRewardsStatsEO"
+    Entity="com.uca.dynamicgam.model.eo.GamRewardsStatsEO"/>
+  <EntityUsage
+    Name="GamActionsEO"
+    Entity="com.uca.dynamicgam.model.eo.GamActionsEO"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS.GamActions"
+    SourceUsage="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.GamRewardsStatsEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.uca.dynamicgam.model.eo.GamRewardsStatsEO.IdStrategy"/>
+        <Item Value="com.uca.dynamicgam.model.eo.GamRewardsStatsEO.IdAction"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.IdStrategy"/>
+        <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.IdAction"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="GamRewardEO"
+    Entity="com.uca.dynamicgam.model.eo.GamRewardEO"
+    Association="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS"
+    AssociationEnd="com.uca.dynamicgam.model.eo.assoc.GamActionsFk4AS.GamReward"
+    SourceUsage="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.GamActionsEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.uca.dynamicgam.model.eo.GamActionsEO.IdReward"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.uca.dynamicgam.model.eo.GamRewardEO.IdReward"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="IdRewardsStats"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IdRewardsStats"
+    EntityUsage="GamRewardsStatsEO"
+    AliasName="ID_REWARDS_STATS"/>
+  <ViewAttribute
+    Name="UserId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserId"
+    EntityUsage="GamRewardsStatsEO"
+    AliasName="USER_ID"
+    LOVName="LOV_UserId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.UserId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StatsTs"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="StatsTs"
+    EntityUsage="GamRewardsStatsEO"
+    AliasName="STATS_TS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.StatsTs_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IdStrategy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IdStrategy"
+    EntityUsage="GamRewardsStatsEO"
+    AliasName="ID_STRATEGY"/>
+  <ViewAttribute
+    Name="IdAction"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IdAction"
+    EntityUsage="GamRewardsStatsEO"
+    AliasName="ID_ACTION"/>
+  <ViewAttribute
+    Name="TruncDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE"
+    Expression="TRUNC(GamRewardsStatsEO.STATS_TS)">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.TruncDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RewardName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RewardName"
+    EntityUsage="GamRewardEO"
+    AliasName="REWARD_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.RewardName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IdReward"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IdReward"
+    EntityUsage="GamRewardEO"
+    AliasName="ID_REWARD"/>
+  <ViewCriteria
+    Name="SearchCriteria"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamRewardsStatsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="GamRewardsStatsVOCriteria_GamRewardsStatsVOCriteria_row_0_UserId"
+        ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="TruncDate"
+        ViewAttribute="TruncDate"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="IdRewardsStats"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
+  </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="StatsTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
+</ViewObject>

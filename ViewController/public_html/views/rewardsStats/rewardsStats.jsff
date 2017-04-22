@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
+    <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelHeader text="#{viewcontrollerBundle.REWARDS_STATS}" id="ph1">
+            <af:query id="qryId1" headerText="#{viewcontrollerBundle.SEARCH}" disclosed="true"
+                      value="#{bindings.SearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SearchCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SearchCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SearchCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:resId1"
+                      rows="1" maxColumns="2"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <af:table value="#{bindings.GamRewardsStatsVO.collectionModel}" var="row"
+                      rows="#{bindings.GamRewardsStatsVO.rangeSize}"
+                      emptyText="#{bindings.GamRewardsStatsVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.GamRewardsStatsVO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.GamRewardsStatsVO.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.GamRewardsStatsVO.rangeSize}"
+                      filterModel="#{bindings.SearchCriteriaQuery.queryDescriptor}" columnStretching="column:c1"
+                      queryListener="#{bindings.SearchCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
+                      scrollPolicy="page">
+                <af:column width="25" align="center" rowHeader="true" id="counter" sortable="true" filterable="true">
+                    <af:outputText value="#{vs.index+1}" id="otCounter"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamRewardsStatsVO.hints.StatsTs.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamRewardsStatsVO.hints.StatsTs.label}" id="resId1c2">
+                    <af:outputText value="#{row.StatsTs}"
+                                   shortDesc="#{bindings.GamRewardsStatsVO.hints.StatsTs.tooltip}" id="ot2">
+                        <af:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                    </af:outputText>
+                    <f:facet name="filter">
+                        <af:inputDate value="#{bindings.SearchCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StatsTs.value}"
+                                      id="id1">
+                            <af:convertDateTime pattern="#{bindings.GamRewardsStatsVO.hints.StatsTs.format}"/>
+                        </af:inputDate>
+                    </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamRewardsStatsVO.hints.UserId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamRewardsStatsVO.hints.UserId.label}" id="resId1c1"
+                           width="250">
+                    <af:selectOneChoice value="#{row.bindings.UserId.inputValue}" label="#{row.bindings.UserId.label}"
+                                        required="#{bindings.GamRewardsStatsVO.hints.UserId.mandatory}"
+                                        shortDesc="#{bindings.GamRewardsStatsVO.hints.UserId.tooltip}" readOnly="true"
+                                        id="soc1">
+                        <f:selectItems value="#{row.bindings.UserId.items}" id="si1"/>
+                        <f:validator binding="#{row.bindings.UserId.validator}"/>
+                    </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamRewardsStatsVO.hints.RewardName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.GamRewardsStatsVO.hints.RewardName.label}" id="c1">
+                    <af:outputText value="#{row.RewardName}"
+                                   shortDesc="#{bindings.GamRewardsStatsVO.hints.RewardName.tooltip}" id="ot1"/>
+                </af:column>
+            </af:table>
+        </af:panelCollection>
+    </af:panelGroupLayout>
+</ui:composition>

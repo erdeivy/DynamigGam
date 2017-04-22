@@ -1,18 +1,64 @@
 @charset "UTF-8";
+
 /**ADFFaces_Skin_File / DO NOT REMOVE**/
 @namespace af "http://xmlns.oracle.com/adf/faces/rich";
 @namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
 
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-style: normal;
+  src: url('http://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYFQlYEbsez9cZjKsNMjLOwM.eot');
+  src: url('http://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYFQlYEbsez9cZjKsNMjLOwM.eot?#iefix') format('embedded-opentype'),
+       local('Montserrat Regular'),
+       local('Montserrat-regular'),
+       url('http://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYAzyDMXhdD8sAj6OAJTFsBI.woff2') format('woff2'),
+       url('http://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff') format('woff'),
+       url('http://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYC3USBnSvpkopQaUR-2r7iU.ttf') format('truetype'),
+       url('http://fonts.gstatic.com/l/font?kit=zhcz-_WihjSQC0oHJ9TCYKWUboTb-jS2tyCOQMtm97g&skey=7bc19f711c0de8f&v=v10#Montserrat') format('svg');
+}
+
+.AFDefaultFontFamily:alias {
+    font-family: 'Montserrat', cursive;
+}
+
+.shadowBox {
+    background-color: White;
+    padding: 4px;
+    margin-bottom: 10px;
+    box-shadow: 5px 1px 5px 1px Gray; 
+}
+
 .mainPsl {
-  background-color: White;
+    background-color: #e0dcdc;
+    background-image: none;
 }
 
 .loginPgl {
-  background-color: White;  
-  font-family: 'Montserrat', sans-serif;
+    background-color: White;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .loginPgl af|panelFormLayout table {
-  border: solid Gray thin;
-  padding: 5px;
+    border: solid Gray thin;
+    padding: 5px;
+}
+
+.blueMenu af|toolbar::body {
+    background-color: #add8e6;
+    text-align: center !important;
+    
+    padding: 4px;
+    margin-bottom: 10px;
+    margin-top: 3px;
+    box-shadow: 1px 1px 5px 1px Gray; 
+}
+
+.blueMenu af|menuBar::item{
+    min-width: 120px;
+}
+
+.highlightedCmi af|commandMenuItem::bar-item-text {
+    font-weight: bold;
+    font-size: 15px;
 }

@@ -95,6 +95,19 @@
          </PIMap>
       </ParameterMap>
    </ViewUsage>
+   <ViewUsage
+      Name="GamRewardsStatsVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO"/>
+   <ViewUsage
+      Name="GamHistoryVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamHistoryVO"/>
+   <ViewUsage
+      Name="LoggedUserVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamUsersVO">
+      <ViewCriteriaUsage
+         Name="FilterByUserIDVC"
+         FullName="com.uca.dynamicgam.model.vo.GamUsersVO.FilterByUserIDVC"/>
+   </ViewUsage>
    <ViewLinkUsage
       Name="GamTablasFkVL1"
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"
