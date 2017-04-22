@@ -35,13 +35,18 @@
 }
 
 .loginPgl {
-    background-color: White;
+    background-image: url("../../images/fondo.jpg");
     font-family: 'Montserrat', sans-serif;
 }
 
 .loginPgl af|panelFormLayout table {
     border: solid Gray thin;
+    background-color: #f9f4f4;
     padding: 5px;
+}
+
+.loginPgl h1, .loginPgl h3{
+    color: White;
 }
 
 .blueMenu af|toolbar::body {

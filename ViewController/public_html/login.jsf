@@ -3,17 +3,19 @@
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <af:document title="Dynamic Gamification | Login" id="d1">
         <af:panelGroupLayout id="pgl1" halign="center" layout="scroll" styleClass="loginPgl">
-            <h1>Dynamic Gamification</h1>
-            <h3>Please, login to continue</h3>
-            <af:form id="f1">
-                <af:panelFormLayout id="pfl1">
-                    <f:facet name="footer"/>
-                    <af:inputText label="User" id="it1" binding="#{backingBeanScope.LoginBean.userInput}"/>
-                    <af:inputText label="Password" id="it2" secret="true"
-                                  binding="#{backingBeanScope.LoginBean.passwordInput}"/>
-                    <af:button text="Login" id="b1" action="#{backingBeanScope.LoginBean.loginAction}"/>
-                </af:panelFormLayout>
-            </af:form>
+            <af:panelGroupLayout id="pgl2">
+                <h1>Dynamic Gamification</h1>
+                <h3>Please, login to continue</h3>
+                <af:form id="f1">
+                    <af:panelFormLayout id="pfl1">
+                        <f:facet name="footer"/>
+                        <af:inputText label="User" id="it1" binding="#{backingBeanScope.LoginBean.userInput}"/>
+                        <af:inputText label="Password" id="it2" secret="true"
+                                      binding="#{backingBeanScope.LoginBean.passwordInput}"/>
+                        <af:button text="Login" id="b1" action="#{backingBeanScope.LoginBean.loginAction}"/>
+                    </af:panelFormLayout>
+                </af:form>
+            </af:panelGroupLayout>
         </af:panelGroupLayout>
     </af:document>
 </f:view>
