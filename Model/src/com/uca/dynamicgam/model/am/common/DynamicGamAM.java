@@ -13,5 +13,7 @@ public interface DynamicGamAM extends ApplicationModule {
     List getAssignedRoles(String viewObject);
 
     void modifyRoles(String viewObject, List newAssignedRoles);
+
+    void setUserAndCommit();
 }
 

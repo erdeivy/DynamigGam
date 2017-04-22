@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="userRolesPageDef"
                 Package="views">
-  <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-    <iterator id="AllRolesVOIterator" Binds="AllRolesVO" DataControl="DynamicGamAMDataControl" RangeSize="-1"/>
-  </executables>
-  <bindings>
-    <list ListOperMode="navigation" IterBinding="AllRolesVOIterator" ListIter="AllRolesVOIterator" id="Roles">
-      <AttrNames>
-        <Item Value="RoleName"/>
-      </AttrNames>
-    </list>
-    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
-            DataControl="DynamicGamAMDataControl"/>
-    <action id="Commit" DataControl="DynamicGamAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
-    <methodAction id="getAssignedRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getAssignedRoles"
-                  IsViewObjectMethod="false" DataControl="DynamicGamAMDataControl"
-                  InstanceName="data.DynamicGamAMDataControl.dataProvider"
-                  ReturnName="data.DynamicGamAMDataControl.methodResults.getAssignedRoles_DynamicGamAMDataControl_dataProvider_getAssignedRoles_result">
-      <NamedData NDName="viewObject" NDValue="GamUserRoleVO" NDType="java.lang.String"/>
-    </methodAction>
-    <methodAction id="modifyRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="modifyRoles"
-                  IsViewObjectMethod="false" DataControl="DynamicGamAMDataControl"
-                  InstanceName="data.DynamicGamAMDataControl.dataProvider"
-                  ReturnName="data.DynamicGamAMDataControl.methodResults.modifyRoles_DynamicGamAMDataControl_dataProvider_modifyRoles_result">
-      <NamedData NDName="viewObject" NDType="java.lang.String"/>
-      <NamedData NDName="newAssignedRoles" NDType="java.util.List"/>
-    </methodAction>
-  </bindings>
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator id="AllRolesVOIterator" Binds="AllRolesVO" DataControl="DynamicGamAMDataControl" RangeSize="-1"/>
+    </executables>
+    <bindings>
+        <list ListOperMode="navigation" IterBinding="AllRolesVOIterator" ListIter="AllRolesVOIterator" id="Roles">
+            <AttrNames>
+                <Item Value="RoleName"/>
+            </AttrNames>
+        </list>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="DynamicGamAMDataControl"/>
+        <methodAction id="Commit" RequiresUpdateModel="true" Action="invokeMethod" MethodName="setUserAndCommit"
+                      IsViewObjectMethod="false" DataControl="DynamicGamAMDataControl"
+                      InstanceName="data.DynamicGamAMDataControl.dataProvider"
+                      ReturnName="data.DynamicGamAMDataControl.methodResults.setUserAndCommit_DynamicGamAMDataControl_dataProvider_setUserAndCommit_result"/>
+        <methodAction id="getAssignedRoles" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="getAssignedRoles" IsViewObjectMethod="false" DataControl="DynamicGamAMDataControl"
+                      InstanceName="data.DynamicGamAMDataControl.dataProvider"
+                      ReturnName="data.DynamicGamAMDataControl.methodResults.getAssignedRoles_DynamicGamAMDataControl_dataProvider_getAssignedRoles_result">
+            <NamedData NDName="viewObject" NDValue="GamUserRoleVO" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="modifyRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="modifyRoles"
+                      IsViewObjectMethod="false" DataControl="DynamicGamAMDataControl"
+                      InstanceName="data.DynamicGamAMDataControl.dataProvider"
+                      ReturnName="data.DynamicGamAMDataControl.methodResults.modifyRoles_DynamicGamAMDataControl_dataProvider_modifyRoles_result">
+            <NamedData NDName="viewObject" NDType="java.lang.String"/>
+            <NamedData NDName="newAssignedRoles" NDType="java.util.List"/>
+        </methodAction>
+    </bindings>
 </pageDefinition>

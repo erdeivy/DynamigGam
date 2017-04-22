@@ -189,6 +189,13 @@
             Name="newAssignedRoles"
             Type="java.util.List"/>
       </Method>
+      <Method
+         Name="setUserAndCommit"
+         MethodName="setUserAndCommit">
+         <Return
+            Name="_return_type_"
+            Type="void"/>
+      </Method>
    </ClientInterface>
    <ResourceBundle >
       <PropertiesBundle

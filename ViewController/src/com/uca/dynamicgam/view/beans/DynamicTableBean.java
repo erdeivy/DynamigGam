@@ -4,6 +4,8 @@ import com.uca.dynamicgam.model.beans.TableRow;
 
 import com.uca.dynamicgam.view.utils.ADFUtils;
 
+import com.uca.dynamicgam.view.utils.JSFUtils;
+
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
@@ -35,43 +37,40 @@ public class DynamicTableBean {
     public RichTable getTableBinding() {
         return tableBinding;
     }
-    
-    public void createRowListener(ActionEvent actionEvent)
-    {
-      ADFUtils.findOperation("createDynamicRowAndColumns").execute();
+
+    public void createRowListener(ActionEvent actionEvent) {
+        ADFUtils.findOperation("createDynamicRowAndColumns").execute();
     }
 
-  public void editRowListener(ActionEvent actionEvent) {
-      Long rowKey = (Long) actionEvent.getComponent().getAttributes().get("RowKey");
-      OperationBinding oper = ADFUtils.findOperation("setCurrentByRowKey");
-      oper.getParamsMap().put("rowKey", rowKey);
-      oper.execute();
-  }
-  
-  public void deleteRowListener(ActionEvent actionEvent) {
-    Long rowKey = (Long) actionEvent.getComponent().getAttributes().get("RowKey");
-    getConfirmDeletePopup().setLauncherVar(rowKey.toString());
-    ADFUtils.showPopup(getConfirmDeletePopup());
-  }
-  
-  public void confirmDeleteListener(DialogEvent dialogEvent)
-  {
-    if(DialogEvent.Outcome.yes.equals(dialogEvent.getOutcome()))
-    {
-      Long rowKey = Long.valueOf(getConfirmDeletePopup().getLauncherVar());
-      OperationBinding oper = ADFUtils.findOperation("deleteByRowKey");
-      oper.getParamsMap().put("rowKey", rowKey);
-      oper.execute();      
+    public void editRowListener(ActionEvent actionEvent) {
+        Long rowKey = (Long) actionEvent.getComponent().getAttributes().get("RowKey");
+        OperationBinding oper = ADFUtils.findOperation("setCurrentByRowKey");
+        oper.getParamsMap().put("rowKey", rowKey);
+        oper.execute();
     }
-  }
 
-  public void setConfirmDeletePopup(RichPopup confirmDeletePopup)
-  {
-    this.confirmDeletePopup = confirmDeletePopup;
-  }
+    public void deleteRowListener(ActionEvent actionEvent) {
+        Long rowKey = (Long) actionEvent.getComponent().getAttributes().get("RowKey");
+        getConfirmDeletePopup().setLauncherVar(rowKey.toString());
+        ADFUtils.showPopup(getConfirmDeletePopup());
+    }
 
-  public RichPopup getConfirmDeletePopup()
-  {
-    return confirmDeletePopup;
-  }
+    public void confirmDeleteListener(DialogEvent dialogEvent) {
+        if (DialogEvent.Outcome.yes.equals(dialogEvent.getOutcome())) {
+            Long rowKey = Long.valueOf(getConfirmDeletePopup().getLauncherVar());
+            OperationBinding oper = ADFUtils.findOperation("deleteByRowKey");
+            oper.getParamsMap().put("rowKey", rowKey);
+            oper.execute();
+            JSFUtils.addPartialTarget(getTableBinding());
+            ADFUtils.invokeOperationBinding("Commit");
+        }
+    }
+
+    public void setConfirmDeletePopup(RichPopup confirmDeletePopup) {
+        this.confirmDeletePopup = confirmDeletePopup;
+    }
+
+    public RichPopup getConfirmDeletePopup() {
+        return confirmDeletePopup;
+    }
 }

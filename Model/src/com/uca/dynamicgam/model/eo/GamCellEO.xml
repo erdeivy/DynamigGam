@@ -39,7 +39,6 @@
   </Attribute>
   <Attribute
     Name="CellValue"
-    IsNotNull="true"
     Precision="100"
     ColumnName="CELL_VALUE"
     SQLType="VARCHAR"
@@ -66,6 +65,18 @@
     <AttrArray Name="Attributes">
       <Item Value="com.uca.dynamicgam.model.eo.GamCellEO.RowKey"/>
       <Item Value="com.uca.dynamicgam.model.eo.GamCellEO.ColumnName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GamCellRowKeyCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GAM_CELL_ROW_KEY_CHECK"/>
+      <Attr Name="_checkCondition" Value='"ROW_KEY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.eo.GamCellEO.RowKey"/>
     </AttrArray>
   </Key>
   <Key

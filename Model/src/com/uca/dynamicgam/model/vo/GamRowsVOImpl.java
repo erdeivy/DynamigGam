@@ -11,41 +11,30 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class GamRowsVOImpl extends ViewObjectImpl implements GamRowsVO
-{
-  /**
-   * This is the default constructor (do not remove).
-   */
-  public GamRowsVOImpl() {}
+public class GamRowsVOImpl extends ViewObjectImpl implements GamRowsVO {
+    /**
+     * This is the default constructor (do not remove).
+     */
+    public GamRowsVOImpl() {
+    }
 
-  public void setCurrentByRowKey(Long rowKey)
-  {
-    Row[] byKey = this.findByKey(new Key(new Object[]
-      {
-        rowKey
-      }), 1);
-    if (byKey != null && byKey.length > 0)
-    {
-      this.setCurrentRow(byKey[0]);
+    public void setCurrentByRowKey(Long rowKey) {
+        Row[] byKey = this.findByKey(new Key(new Object[] { rowKey }), 1);
+        if (byKey != null && byKey.length > 0) {
+            this.setCurrentRow(byKey[0]);
+        }
     }
-  }
-  
-  public void deleteByRowKey(Long rowKey)
-  {
-    Row[] byKey = this.findByKey(new Key(new Object[]
-      {
-        rowKey
-      }), 1);
-    if (byKey != null && byKey.length > 0)
-    {
-      GamRowsVORowImpl deleteRow = (GamRowsVORowImpl) byKey[0];
-      Row[]            cells = deleteRow.getGamCell().getAllRowsInRange();
-      for(Row cell : cells)
-      {
-        cell.remove();
-      }
-      deleteRow.remove();
+
+    public void deleteByRowKey(Long rowKey) {
+        Row[] byKey = this.findByKey(new Key(new Object[] { rowKey }), 1);
+        if (byKey != null && byKey.length > 0) {
+            GamRowsVORowImpl deleteRow = (GamRowsVORowImpl) byKey[0];
+            Row[] cells = deleteRow.getGamCell().getAllRowsInRange();
+            for (Row cell : cells) {
+                cell.remove();
+            }
+            deleteRow.remove();
+        }
     }
-  }
 }
 

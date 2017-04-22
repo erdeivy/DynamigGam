@@ -38,7 +38,7 @@
                 </af:column>
                 <af:column sortProperty="#{bindings.DynamicCellsByRowVO.hints.CellValue.name}" filterable="true"
                            sortable="true" headerText="#{bindings.DynamicCellsByRowVO.hints.CellValue.label}" id="c2">
-                    <af:inputText value="#{row.bindings.CellValue.inputValue}"
+                    <af:inputText value="#{row.bindings.CellValue.inputValue}" autoSubmit="true"
                                   label="#{bindings.DynamicCellsByRowVO.hints.CellValue.label}"
                                   required="#{bindings.DynamicCellsByRowVO.hints.CellValue.mandatory}"
                                   columns="#{bindings.DynamicCellsByRowVO.hints.CellValue.displayWidth}"
