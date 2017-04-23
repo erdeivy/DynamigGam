@@ -467,4 +467,20 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
     public ViewObjectImpl getLoggedUserVO() {
         return (ViewObjectImpl) findViewObject("LoggedUserVO");
     }
+
+    /**
+     * Container's getter for SchemasByUser1.
+     * @return SchemasByUser1
+     */
+    public ViewObjectImpl getSchemasByUserVO() {
+        return (ViewObjectImpl) findViewObject("SchemasByUserVO");
+    }
+
+    /**
+     * Container's getter for SchemasByUser_TablesByUser_VL1.
+     * @return SchemasByUser_TablesByUser_VL1
+     */
+    public ViewLinkImpl getSchemasByUser_TablesByUser_VL1() {
+        return (ViewLinkImpl) findViewLink("SchemasByUser_TablesByUser_VL1");
+    }
 }

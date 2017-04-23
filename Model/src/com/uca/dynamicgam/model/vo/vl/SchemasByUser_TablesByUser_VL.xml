@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SchemasByUser_TablesByUser_VL"
+  Version="12.1.3.12.39"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.uca.dynamicgam.model.vo.vl.SchemasByUser_TablesByUser_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SchemasByUser"
+    Cardinality="1"
+    Source="true"
+    Owner="com.uca.dynamicgam.model.vo.SchemasByUserVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SchemasByUser"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.vo.SchemasByUserVO.SchemaName"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="TablesByUser"
+    Cardinality="-1"
+    Owner="com.uca.dynamicgam.model.vo.TablesByUserVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="TablesByUser"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.uca.dynamicgam.model.vo.TablesByUserVO.Schema"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

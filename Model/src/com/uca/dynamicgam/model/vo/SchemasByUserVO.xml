@@ -3,13 +3,13 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="TablesByUserVO"
+  Name="SchemasByUserVO"
   Version="12.1.3.12.39"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  RowClass="com.uca.dynamicgam.model.vo.TablesByUserVORowImpl">
+  RowClass="com.uca.dynamicgam.model.vo.SchemasByUserVORowImpl">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
     <Attr Name="_codeGenFlag2" Value="Access"/>
@@ -18,7 +18,7 @@
   <Properties>
     <SchemaBasedProperties>
       <LABEL
-        ResId="com.uca.dynamicgam.model.vo.TablesByUserVO_LABEL"/>
+        ResId="com.uca.dynamicgam.model.vo.SchemasByUserVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
   <Variable
@@ -29,60 +29,34 @@
       trustMode="untrusted"
       Name="expression"><![CDATA[adf.context.securityContext.getUserName()]]></TransientExpression>
   </Variable>
-  <SQLQuery><![CDATA[SELECT T.SCHEMA, 
-       T.TABLE_NAME 
-FROM GAM_TABLES T, 
-     GAM_SCHEMA_ROLE SR, 
-     GAM_USER_ROLE UR 
-WHERE T.SCHEMA = SR.SCHEMA_NAME 
-  AND UR.ROLE_NAME = SR.ROLE_NAME 
+  <SQLQuery><![CDATA[SELECT SR.SCHEMA_NAME 
+FROM GAM_SCHEMA_ROLE SR,  
+     GAM_USER_ROLE UR  
+WHERE UR.ROLE_NAME = SR.ROLE_NAME  
   AND UR.USER_ID = :bind_user]]></SQLQuery>
   <ViewAttribute
-    Name="Schema"
+    Name="SchemaName"
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
     Precision="255"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    AliasName="SCHEMA"
-    Expression="SCHEMA"
+    AliasName="SCHEMA_NAME"
+    Expression="SCHEMA_NAME"
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="com.uca.dynamicgam.model.vo.TablesByUserVO.Schema_LABEL"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="TableName"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="50"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="TABLE_NAME"
-    Expression="TABLE_NAME"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="50"/>
-    </DesignTime>
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="com.uca.dynamicgam.model.vo.TablesByUserVO.TableName_LABEL"/>
-      </SchemaBasedProperties>
-    </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
-    <Item Value="Schema"/>
-    <Item Value="TableName"/>
+    <Item Value="SchemaName"/>
   </AttrArray>
+  <ViewLinkAccessor
+    Name="TablesByUser"
+    ViewLink="com.uca.dynamicgam.model.vo.vl.SchemasByUser_TablesByUser_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>

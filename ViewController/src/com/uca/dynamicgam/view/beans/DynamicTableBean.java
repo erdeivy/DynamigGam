@@ -6,6 +6,9 @@ import com.uca.dynamicgam.view.utils.ADFUtils;
 
 import com.uca.dynamicgam.view.utils.JSFUtils;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
@@ -72,5 +75,17 @@ public class DynamicTableBean {
 
     public RichPopup getConfirmDeletePopup() {
         return confirmDeletePopup;
+    }
+
+    private int getScreenWidth() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        return screenSize.width;
+    }
+    
+    public String getColumnWidth(){
+        long screenWidth = getScreenWidth() - 550;
+        long columns = ADFUtils.findIterator("DynamicColumnsVOIterator").getEstimatedRowCount();
+        
+        return Long.valueOf(screenWidth/columns).toString();
     }
 }

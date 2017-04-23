@@ -5,6 +5,11 @@
         <data-control-scope>
             <shared/>
         </data-control-scope>
+        <managed-bean id="__5">
+            <managed-bean-name>TablesListBean</managed-bean-name>
+            <managed-bean-class>com.uca.dynamicgam.view.beans.TablesListBean</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
         <view id="tablesList">
             <page>/views/tables/tablesList.jsff</page>
         </view>
@@ -15,12 +20,12 @@
             </task-flow-reference>
             <input-parameter id="__3">
                 <name>schema</name>
-                <value>#{bindings.Schema.inputValue}</value>
+                <value>#{pageFlowScope.Schema}</value>
                 <pass-by-value/>
             </input-parameter>
             <input-parameter id="__4">
                 <name>table</name>
-                <value>#{bindings.TableName.inputValue}</value>
+                <value>#{pageFlowScope.TableName}</value>
                 <pass-by-value/>
             </input-parameter>
         </task-flow-call>

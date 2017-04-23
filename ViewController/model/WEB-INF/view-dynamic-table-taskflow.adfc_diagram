@@ -7,7 +7,7 @@
       <property
          name="activityId">dynamicTable</property>
       <property
-         name="page">/views/dynamicTable.jsff</property>
+         name="page">/views/tables/dynamicTable.jsff</property>
       <property
          name="start">false</property>
       <property
@@ -17,9 +17,9 @@
       <property
          name="y">129.19531</property>
       <property
-         name="x">196.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">196.0</property>
    </View>
    <TaskFlowReturn
       id="TaskFlowReturn5">
@@ -51,7 +51,7 @@
       <property
          name="activityId">dynamicRowEdit</property>
       <property
-         name="page">/views/dynamicRowEdit.jsff</property>
+         name="page">/views/tables/dynamicRowEdit.jsff</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>dynamicRowEdit&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
@@ -59,9 +59,9 @@
       <property
          name="y">177.24707</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">628.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"

@@ -87,14 +87,7 @@
       ViewObjectName="com.uca.dynamicgam.model.vo.GamActionsVO"/>
    <ViewUsage
       Name="TablesByUserVO"
-      ViewObjectName="com.uca.dynamicgam.model.vo.TablesByUserVO">
-      <ParameterMap>
-         <PIMap Variable="bind_user">
-            <TransientExpression
-               trustMode="untrusted"><![CDATA[adf.context.securityContext.getUserName()]]></TransientExpression>
-         </PIMap>
-      </ParameterMap>
-   </ViewUsage>
+      ViewObjectName="com.uca.dynamicgam.model.vo.TablesByUserVO"/>
    <ViewUsage
       Name="GamRewardsStatsVO"
       ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO"/>
@@ -108,6 +101,9 @@
          Name="FilterByUserIDVC"
          FullName="com.uca.dynamicgam.model.vo.GamUsersVO.FilterByUserIDVC"/>
    </ViewUsage>
+   <ViewUsage
+      Name="SchemasByUserVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.SchemasByUserVO"/>
    <ViewLinkUsage
       Name="GamTablasFkVL1"
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"
@@ -168,6 +164,12 @@
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamStrategyActionsVL"
       SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamStrategyVO"
       DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.GamActionsVO"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="SchemasByUser_TablesByUser_VL1"
+      ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.SchemasByUser_TablesByUser_VL"
+      SrcViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.SchemasByUserVO"
+      DstViewUsageName="com.uca.dynamicgam.model.am.DynamicGamAM.TablesByUserVO"
       Reversed="false"/>
    <ClientInterface
       Name="__clientInterface" >

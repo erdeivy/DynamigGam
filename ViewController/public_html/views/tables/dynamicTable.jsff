@@ -22,12 +22,14 @@
                 <f:facet name="statusbar"/>
                 <af:table var="row" rowBandingInterval="0" id="t1" varStatus="vs"
                           value="#{backingBeanScope.DynamicTableBean.tableContent}"
-                          binding="#{backingBeanScope.DynamicTableBean.tableBinding}" columnStretching="multiple">
+                          binding="#{backingBeanScope.DynamicTableBean.tableBinding}" columnStretching="multiple"
+                          scrollPolicy="page" fetchSize="10">
                     <af:column width="25" align="center" rowHeader="true" id="counter">
                         <af:outputText value="#{vs.index+1}" id="otCounter"/>
                     </af:column>
                     <af:forEach items="#{bindings.DynamicColumnsVO.allRowsInRange}" var="columna">
-                        <af:column sortable="false" headerText="#{columna.columnName}" id="c1">
+                        <af:column sortable="false" headerText="#{columna.columnName}" id="c1"
+                                   width="#{backingBeanScope.DynamicTableBean.columnWidth}">
                             <af:outputText value="#{row[columna.columnName]}" id="ot2"/>
                         </af:column>
                     </af:forEach>

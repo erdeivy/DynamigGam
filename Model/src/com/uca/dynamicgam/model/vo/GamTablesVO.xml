@@ -187,31 +187,6 @@
         Name="table"
         Type="java.lang.String"/>
     </Method>
-    <Method
-      Name="buildTableContent"
-      MethodName="buildTableContent">
-      <Return
-        Name="_return_type_"
-        Type="java.util.List"
-        IsGeneric="true">
-        <Element
-          Name="TableRow"
-          Type="com.uca.dynamicgam.model.beans.TableRow"/>
-      </Return>
-    </Method>
-    <Method
-      Name="queryTableAndColumns"
-      MethodName="queryTableAndColumns">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="schema"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="table"
-        Type="java.lang.String"/>
-    </Method>
   </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle

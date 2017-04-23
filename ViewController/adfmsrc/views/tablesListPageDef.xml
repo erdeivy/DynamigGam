@@ -7,6 +7,8 @@
     <iterator Binds="TablesByUserVO" RangeSize="25" DataControl="DynamicGamAMDataControl" id="TablesByUserVOIterator"/>
     <searchRegion Binds="TablesByUserVOIterator" Criteria=""
                   Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="TablesByUserVOQuery"/>
+    <iterator id="SchemasByUserVOIterator" Binds="SchemasByUserVO" DataControl="DynamicGamAMDataControl"
+              RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="TablesByUserVOIterator" id="TablesByUserVO">
@@ -14,6 +16,13 @@
         <AttrNames>
           <Item Value="Schema"/>
           <Item Value="TableName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SchemasByUserVOIterator" id="SchemasByUserVO">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.SchemasByUserVO" Name="SchemasByUserVO0">
+        <AttrNames>
+          <Item Value="SchemaName"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
