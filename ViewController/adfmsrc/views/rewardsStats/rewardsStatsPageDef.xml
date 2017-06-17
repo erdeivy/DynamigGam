@@ -8,6 +8,8 @@
               id="GamRewardsStatsVOIterator"/>
     <searchRegion Criteria="SearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   Binds="GamRewardsStatsVOIterator" id="SearchCriteriaQuery"/>
+    <searchRegion Criteria="SearchCriteriaAdmin" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="GamRewardsStatsVOIterator" id="SearchCriteriaAdminQuery"/>
   </executables>
   <bindings>
     <tree IterBinding="GamRewardsStatsVOIterator" id="GamRewardsStatsVO">

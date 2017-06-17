@@ -10,7 +10,15 @@
                       queryListener="#{bindings.SearchCriteriaQuery.processQuery}"
                       queryOperationListener="#{bindings.SearchCriteriaQuery.processQueryOperation}"
                       resultComponentId="::pc1:resId1"
-                      rows="1" maxColumns="2"/>
+                      rendered="#{not securityContext.userInRole['ROL_ADMIN']}"
+                      rows="3" maxColumns="2"/>
+            <af:query id="qryId2" headerText="Search" disclosed="true"
+                      value="#{bindings.SearchCriteriaAdminQuery.queryDescriptor}"
+                      model="#{bindings.SearchCriteriaAdminQuery.queryModel}"
+                      queryListener="#{bindings.SearchCriteriaAdminQuery.processQuery}"
+                      queryOperationListener="#{bindings.SearchCriteriaAdminQuery.processQueryOperation}"
+                      rendered="#{securityContext.userInRole['ROL_ADMIN']}"
+                      rows="3" maxColumns="2"/>
         </af:panelHeader>
         <af:panelCollection id="pc1" styleClass="AFStretchWidth">
             <af:table value="#{bindings.GamRewardsStatsVO.collectionModel}" var="row"

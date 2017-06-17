@@ -5,6 +5,7 @@ import com.uca.dynamicgam.model.vo.GamCellVOImpl;
 import com.uca.dynamicgam.model.vo.GamCellVORowImpl;
 import com.uca.dynamicgam.model.vo.GamColumnsVOImpl;
 import com.uca.dynamicgam.model.vo.GamColumnsVORowImpl;
+import com.uca.dynamicgam.model.vo.GamRewardsStatsVOImpl;
 import com.uca.dynamicgam.model.vo.GamRowsVOImpl;
 import com.uca.dynamicgam.model.vo.GamRowsVORowImpl;
 import com.uca.dynamicgam.model.vo.GamTablesVOImpl;
@@ -391,9 +392,10 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
         return secCntx.getUserName();
     }
 
-    public void setUserAndCommit() {
+    public List setUserAndCommit() {
         callStoredProcedure(getDBTransaction(), "PKG_GAM_USER.SET_USER", getLoggedUser());
         getDBTransaction().commit();
+        return getUserNotShownRewardsVO().getNewRewards();
     }
 
     /**
@@ -448,8 +450,8 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
      * Container's getter for GamRewardsStats1.
      * @return GamRewardsStats1
      */
-    public ViewObjectImpl getGamRewardsStatsVO() {
-        return (ViewObjectImpl) findViewObject("GamRewardsStatsVO");
+    public GamRewardsStatsVOImpl getGamRewardsStatsVO() {
+        return (GamRewardsStatsVOImpl) findViewObject("GamRewardsStatsVO");
     }
 
     /**
@@ -482,5 +484,13 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
      */
     public ViewLinkImpl getSchemasByUser_TablesByUser_VL1() {
         return (ViewLinkImpl) findViewLink("SchemasByUser_TablesByUser_VL1");
+    }
+
+    /**
+     * Container's getter for GamRewardsStats1.
+     * @return GamRewardsStats1
+     */
+    public GamRewardsStatsVOImpl getUserNotShownRewardsVO() {
+        return (GamRewardsStatsVOImpl) findViewObject("UserNotShownRewardsVO");
     }
 }

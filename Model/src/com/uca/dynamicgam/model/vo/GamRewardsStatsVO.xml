@@ -12,10 +12,34 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  ComponentClass="com.uca.dynamicgam.model.vo.GamRewardsStatsVOImpl"
+  RowClass="com.uca.dynamicgam.model.vo.GamRewardsStatsVORowImpl"
+  ComponentInterface="com.uca.dynamicgam.model.vo.common.GamRewardsStatsVO"
+  ClientProxyName="com.uca.dynamicgam.model.vo.client.GamRewardsStatsVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="bind_currentUser"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <TransientExpression
+      trustMode="untrusted"
+      Name="expression"><![CDATA[adf.context.securityContext.getUserName()]]></TransientExpression>
+  </Variable>
   <ViewAccessor
     Name="GamUsersVO"
     ViewObjectName="com.uca.dynamicgam.model.vo.GamUsersVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="YesNoLOV1"
+    ViewObjectName="com.uca.dynamicgam.model.vo.lov.YesNoLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="YesNoLOV2"
+    ViewObjectName="com.uca.dynamicgam.model.vo.lov.YesNoLOV"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_UserId"
@@ -33,6 +57,42 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="FullDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Shown"
+    ListVOName="YesNoLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Shown"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Text"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Quantifiable"
+    ListVOName="YesNoLOV2"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Quantifiable"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Text"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -132,6 +192,36 @@
     EntityUsage="GamRewardsStatsEO"
     AliasName="ID_ACTION"/>
   <ViewAttribute
+    Name="Shown"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Shown"
+    EntityUsage="GamRewardsStatsEO"
+    AliasName="SHOWN"
+    LOVName="LOV_Shown">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Quantifiable"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Quantifiable"
+    EntityUsage="GamRewardEO"
+    AliasName="QUANTIFIABLE"
+    LOVName="LOV_Quantifiable">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
     Name="TruncDate"
     IsUpdateable="false"
     IsPersistent="false"
@@ -169,10 +259,119 @@
     EntityAttrName="IdReward"
     EntityUsage="GamRewardEO"
     AliasName="ID_REWARD"/>
+  <ViewAttribute
+    Name="Image"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Image"
+    EntityUsage="GamRewardEO"
+    AliasName="IMAGE"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="GamRewardEO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Weight"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Weight"
+    EntityUsage="GamRewardEO"
+    AliasName="WEIGHT"/>
   <ViewCriteria
     Name="SearchCriteria"
     ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO"
     Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamRewardsStatsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="TruncDate"
+        ViewAttribute="TruncDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Shown"
+        ViewAttribute="Shown"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="AllowMultipleValues"
+              Value="true"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Quantifiable"
+        ViewAttribute="Quantifiable"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="AllowMultipleValues"
+              Value="true"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="RewardName"
+        ViewAttribute="RewardName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="25"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="SearchCriteria_GamRewardsStatsVOCriteria_row_0_Description"
+        ViewAttribute="Description"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="25"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="UserNotShown"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO"
+    Conjunction="AND"
+    Mode="3">
     <Properties>
       <CustomProperties>
         <Property
@@ -196,26 +395,139 @@
       Name="GamRewardsStatsVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
-        Name="GamRewardsStatsVOCriteria_GamRewardsStatsVOCriteria_row_0_UserId"
+        Name="UserId"
         ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bind_currentUser"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Shown"
+        ViewAttribute="Shown"
+        Operator="="
+        Conjunction="AND"
+        Value="N"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCriteriaAdmin"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="GamRewardsStatsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UserId"
+        ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="AllowMultipleValues"
+              Value="true"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="TruncDate"
+        ViewAttribute="TruncDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Shown"
+        ViewAttribute="Shown"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="TruncDate"
-        ViewAttribute="TruncDate"
+        Name="Quantifiable"
+        ViewAttribute="Quantifiable"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RewardName"
+        ViewAttribute="RewardName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="25"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="GamRewardsStatsVOCriteria_GamRewardsStatsVOCriteria_row_0_Description"
+        ViewAttribute="Description"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="25"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
     </ViewCriteriaRow>
   </ViewCriteria>
   <AttrArray Name="KeyAttributes">
     <Item Value="IdRewardsStats"/>
   </AttrArray>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="getNewRewards"
+      MethodName="getNewRewards">
+      <Return
+        Name="_return_type_"
+        Type="java.util.List"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="StatsTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
+  <SortCriteria>
+    <Sort
+      Attribute="StatsTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="StatsTs"

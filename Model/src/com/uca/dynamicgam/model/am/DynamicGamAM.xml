@@ -104,6 +104,13 @@
    <ViewUsage
       Name="SchemasByUserVO"
       ViewObjectName="com.uca.dynamicgam.model.vo.SchemasByUserVO"/>
+   <ViewUsage
+      Name="UserNotShownRewardsVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO">
+      <ViewCriteriaUsage
+         Name="UserNotShown"
+         FullName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.UserNotShown"/>
+   </ViewUsage>
    <ViewLinkUsage
       Name="GamTablasFkVL1"
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"
@@ -209,7 +216,7 @@
          MethodName="setUserAndCommit">
          <Return
             Name="_return_type_"
-            Type="void"/>
+            Type="java.util.List"/>
       </Method>
    </ClientInterface>
    <ResourceBundle >

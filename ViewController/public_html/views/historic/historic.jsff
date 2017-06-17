@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
     <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
     <af:panelGroupLayout layout="vertical" id="pgl1">
         <af:panelHeader text="#{viewcontrollerBundle.ACTIONS_HISTORIC}" id="ph1">
@@ -8,8 +9,16 @@
                       value="#{bindings.SearchCriteriaQuery.queryDescriptor}"
                       model="#{bindings.SearchCriteriaQuery.queryModel}"
                       queryListener="#{bindings.SearchCriteriaQuery.processQuery}"
+                      rendered="#{not securityContext.userInRole['ROL_ADMIN']}"
                       queryOperationListener="#{bindings.SearchCriteriaQuery.processQueryOperation}"
                       resultComponentId="::pc1:resId1" rows="3" maxColumns="3"/>
+            <af:query id="qryId2" headerText="#{viewcontrollerBundle.SEARCH}" disclosed="true"
+                      value="#{bindings.SearchCriteriaAdminQuery.queryDescriptor}"
+                      model="#{bindings.SearchCriteriaAdminQuery.queryModel}"
+                      queryListener="#{bindings.SearchCriteriaAdminQuery.processQuery}"
+                      rendered="#{securityContext.userInRole['ROL_ADMIN']}"
+                      resultComponentId="::pc1:resId1" rows="3" maxColumns="3"
+                      queryOperationListener="#{bindings.SearchCriteriaAdminQuery.processQueryOperation}"/>
         </af:panelHeader>
         <af:panelCollection id="pc1" styleClass="AFStretchWidth">
             <af:table value="#{bindings.GamHistoryVO.collectionModel}" var="row"
@@ -78,5 +87,13 @@
                 </af:column>
             </af:table>
         </af:panelCollection>
+        <af:panelBox text="Statistics by operation type" id="pb1">
+            <f:facet name="toolbar"/>
+            <dvt:pieChart id="pieChart1" var="row" value="#{bindings.GamHistoryVO.collectionModel}"
+                          partialTriggers="::qryId1 ::qryId2 ::pc1:resId1">
+                <dvt:chartLegend id="cl1"/>
+                <dvt:pieDataItem id="di1" value="1" label="#{row.Operation}"/>
+            </dvt:pieChart>
+        </af:panelBox>
     </af:panelGroupLayout>
 </ui:composition>

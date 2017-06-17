@@ -62,6 +62,19 @@
     Type="java.lang.Long"
     ColumnType="NUMBER"
     TableName="GAM_REWARDS_STATS"/>
+  <Attribute
+    Name="Shown"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="SHOWN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GAM_REWARDS_STATS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="GamActions"
     Association="com.uca.dynamicgam.model.eo.assoc.GamRewardsStatsFk2AS"

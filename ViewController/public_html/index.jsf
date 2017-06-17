@@ -1,20 +1,43 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
     <af:document title="Dynamic Gamification" id="d1" styleClass="mainPsl">
         <af:messages id="m1"/>
         <af:form id="f1">
             <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.MenuBean.pslMain}" styleClass="mainPsl"
                                    bottomHeight="0px">
                 <f:facet name="bottom">
-                    <af:popup binding="#{backingBeanScope.MenuBean.pendingChangesPopup}" id="p1">
-                        <af:dialog title="Pending changes" type="yesNo" id="d2"
-                                   dialogListener="#{backingBeanScope.MenuBean.pendingChangesListener}">
-                            <af:message messageType="warning"
-                                        message="You have pending changes in this screen. Do you want to cancel these changes and navigate?"
-                                        id="m3"/>
-                        </af:dialog>
-                    </af:popup>
+                    <af:group id="g1">
+                        <af:popup binding="#{backingBeanScope.MenuBean.pendingChangesPopup}" id="p1">
+                            <af:dialog title="Pending changes" type="yesNo" id="d2"
+                                       dialogListener="#{backingBeanScope.MenuBean.pendingChangesListener}">
+                                <af:message messageType="warning"
+                                            message="You have pending changes in this screen. Do you want to cancel these changes and navigate?"
+                                            id="m3"/>
+                            </af:dialog>
+                        </af:popup>
+                        <af:popup id="rewardsPopup" contentDelivery="lazyUncached">
+                            <af:dialog id="d3" type="ok"
+                                       title="#{viewcontrollerBundle.CONGRATULATIONS__YOU_HAVE_EARNED_NEW_REWARDS_}">
+                                <af:panelGroupLayout id="pgl2" layout="vertical">
+                                    <af:iterator value="#{pageFlowScope.rewardsMessages}" var="rewardMessage" id="rewrdIt">
+                                        <af:panelGroupLayout id="pgl3" layout="horizontal">
+                                            <af:image source="#{rewardMessage.image}" shortDesc="#{rewardMessage.name}"
+                                                      id="i3"/>
+                                            <af:spacer width="1" id="s2"/>
+                                            <af:outputText value="#{rewardMessage.qty}" shortDesc="#{rewardMessage.qty}"
+                                                           id="ot3"/>
+                                            <af:spacer width="3" id="s3"/>
+                                            <af:outputText value="#{rewardMessage.name}"
+                                                           shortDesc="#{rewardMessage.description}" id="ot2"/>
+                                        </af:panelGroupLayout>
+                                    </af:iterator>
+                                </af:panelGroupLayout>
+                            </af:dialog>
+                        </af:popup>
+                    </af:group>
                 </f:facet>
                 <f:facet name="center">
                     <af:region value="#{bindings.dynamictf.regionModel}" id="r1" styleClass="shadowBox"/>
@@ -50,15 +73,14 @@
                             <af:commandMenuItem text="Rewards Statistics" id="cmi9" immediate="true"
                                                 action="#{backingBeanScope.MenuBean.goRewardsStatsAction}"
                                                 icon="/icons/medal.png"/>
-                        <af:spacer clientComponent="true" id="s1"/>
-                        <af:menu text="#{bindings.FullDescription.inputValue}" id="cmi10" icon="/icons/user.png">
-                            <?audit suppress oracle.ide.xml.validation-error?>
-                            <af:commandMenuItem text="Logout" id="cmi11" immediate="true"
-                                                action="#{backingBeanScope.LoginBean.logoutAction}"
-                                                icon="/icons/exit.png"/>
-                        </af:menu>                            
+                            <af:spacer clientComponent="true" id="s1"/>
+                            <af:menu text="#{bindings.FullDescription.inputValue}" id="cmi10" icon="/icons/user.png">
+                                <?audit suppress oracle.ide.xml.validation-error?>
+                                <af:commandMenuItem text="Logout" id="cmi11" immediate="true"
+                                                    action="#{backingBeanScope.LoginBean.logoutAction}"
+                                                    icon="/icons/exit.png"/>
+                            </af:menu>
                         </af:menuBar>
-
                     </af:toolbar>
                 </f:facet>
             </af:panelStretchLayout>

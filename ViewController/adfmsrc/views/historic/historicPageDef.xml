@@ -4,9 +4,11 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="GamHistoryVO" RangeSize="10" DataControl="DynamicGamAMDataControl" id="GamHistoryVOIterator"/>
+    <iterator Binds="GamHistoryVO" RangeSize="-1" DataControl="DynamicGamAMDataControl" id="GamHistoryVOIterator"/>
     <searchRegion Criteria="SearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   Binds="GamHistoryVOIterator" id="SearchCriteriaQuery"/>
+    <searchRegion Criteria="SearchCriteriaAdmin" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="GamHistoryVOIterator" id="SearchCriteriaAdminQuery"/>
   </executables>
   <bindings>
     <tree IterBinding="GamHistoryVOIterator" id="GamHistoryVO">
@@ -18,6 +20,21 @@
           <Item Value="TableName"/>
           <Item Value="ColumnName"/>
           <Item Value="Rewarded"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="GamHistoryVOIterator" id="GamHistoryVO1" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamHistoryVO" Name="GamHistoryVO1">
+        <AttrNames>
+          <Item Value="IdHistory"/>
+          <Item Value="Operation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="GamHistoryVOIterator" id="GamHistoryVO2">
+      <nodeDefinition DefName="com.uca.dynamicgam.model.vo.GamHistoryVO" Name="GamHistoryVO20">
+        <AttrNames>
+          <Item Value="IdHistory"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

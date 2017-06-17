@@ -162,6 +162,23 @@
     </Properties>
   </ViewAttribute>
   <ViewAttribute
+    Name="TruncDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE"
+    Expression="TRUNC(GamHistoryEO.HISTORY_TS)">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.uca.dynamicgam.model.vo.GamHistoryVO.TruncDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
     Name="TableName"
     IsUpdateable="false"
     IsNotNull="true"
@@ -190,23 +207,6 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
-  <ViewAttribute
-    Name="TruncDate"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="oracle.jbo.domain.Date"
-    ColumnType="DATE"
-    AliasName="VIEW_ATTR"
-    SQLType="DATE"
-    Expression="TRUNC(GamHistoryEO.HISTORY_TS)">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="com.uca.dynamicgam.model.vo.GamHistoryVO.TruncDate_LABEL"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
   <ViewCriteria
     Name="SearchCriteria"
     ViewObjectName="com.uca.dynamicgam.model.vo.GamHistoryVO"
@@ -218,7 +218,7 @@
           Value="InAdvancedMode"/>
         <Property
           Name="autoExecute"
-          Value="false"/>
+          Value="true"/>
         <Property
           Name="allowConjunctionOverride"
           Value="true"/>
@@ -234,20 +234,6 @@
       Name="GamHistoryVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
-        Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_UserId"
-        ViewAttribute="UserId"
-        Operator="="
-        Conjunction="AND"
-        Required="Optional">
-        <Properties>
-          <CustomProperties>
-            <Property
-              Name="AllowMultipleValues"
-              Value="true"/>
-          </CustomProperties>
-        </Properties>
-      </ViewCriteriaItem>
-      <ViewCriteriaItem
         Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_Operation"
         ViewAttribute="Operation"
         Operator="="
@@ -261,18 +247,6 @@
           </CustomProperties>
         </Properties>
       </ViewCriteriaItem>
-      <ViewCriteriaItem
-        Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_TableName"
-        ViewAttribute="TableName"
-        Operator="STARTSWITH"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
-        Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_ColumnName"
-        ViewAttribute="ColumnName"
-        Operator="STARTSWITH"
-        Conjunction="AND"
-        Required="Optional"/>
       <ViewCriteriaItem
         Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_Rewarded"
         ViewAttribute="Rewarded"
@@ -293,6 +267,106 @@
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
+      <ViewCriteriaItem
+        Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_TableName"
+        ViewAttribute="TableName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_ColumnName"
+        ViewAttribute="ColumnName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCriteriaAdmin"
+    ViewObjectName="com.uca.dynamicgam.model.vo.GamHistoryVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SearchCriteriaAdmin_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UserId"
+        ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="AllowMultipleValues"
+              Value="true"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="SearchCriteriaAdmin_SearchCriteriaAdmin_row_0_Operation"
+        ViewAttribute="Operation"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="AllowMultipleValues"
+              Value="true"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Rewarded"
+        ViewAttribute="Rewarded"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="AllowMultipleValues"
+              Value="true"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="TruncDate"
+        ViewAttribute="TruncDate"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="TableName"
+        ViewAttribute="TableName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SearchCriteriaAdmin_SearchCriteriaAdmin_row_0_ColumnName"
+        ViewAttribute="ColumnName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
   <SortCriteria>
@@ -306,4 +380,11 @@
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="HistoryTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
 </ViewObject>

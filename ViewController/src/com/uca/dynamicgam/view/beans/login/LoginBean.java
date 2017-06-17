@@ -7,6 +7,8 @@ import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import javax.faces.event.ComponentSystemEvent;
+
 import javax.security.auth.Subject;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.login.FailedLoginException;
@@ -14,6 +16,8 @@ import javax.security.auth.login.LoginException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.myfaces.trinidad.component.UIXIterator;
 
 import weblogic.security.SimpleCallbackHandler;
 import weblogic.security.services.Authentication;

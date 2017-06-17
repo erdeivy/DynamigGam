@@ -5,6 +5,11 @@
         <data-control-scope>
             <shared/>
         </data-control-scope>
+        <managed-bean id="__1">
+            <managed-bean-name>WelcomeBean</managed-bean-name>
+            <managed-bean-class>com.uca.dynamicgam.view.beans.WelcomeBean</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
         <view id="view1">
             <page>/views/welcome.jsff</page>
         </view>
