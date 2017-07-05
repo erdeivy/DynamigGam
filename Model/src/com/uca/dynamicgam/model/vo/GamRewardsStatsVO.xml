@@ -306,11 +306,21 @@
       Name="GamRewardsStatsVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
-        Name="TruncDate"
-        ViewAttribute="TruncDate"
-        Operator="BETWEEN"
+        Name="UserId"
+        ViewAttribute="UserId"
+        Operator="="
         Conjunction="AND"
-        Required="Optional"/>
+        Value=":bind_currentUser"
+        IsBindVarValue="true"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
       <ViewCriteriaItem
         Name="Shown"
         ViewAttribute="Shown"
@@ -339,6 +349,12 @@
           </CustomProperties>
         </Properties>
       </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="TruncDate"
+        ViewAttribute="TruncDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
       <ViewCriteriaItem
         Name="RewardName"
         ViewAttribute="RewardName"
@@ -452,12 +468,6 @@
         </Properties>
       </ViewCriteriaItem>
       <ViewCriteriaItem
-        Name="TruncDate"
-        ViewAttribute="TruncDate"
-        Operator="BETWEEN"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
         Name="Shown"
         ViewAttribute="Shown"
         Operator="="
@@ -467,6 +477,12 @@
         Name="Quantifiable"
         ViewAttribute="Quantifiable"
         Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="TruncDate"
+        ViewAttribute="TruncDate"
+        Operator="BETWEEN"
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
@@ -514,6 +530,13 @@
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="StatsTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="StatsTs"

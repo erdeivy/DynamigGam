@@ -8,6 +8,7 @@
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
+  ComponentClass="com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl"
   PageIterMode="Full">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>

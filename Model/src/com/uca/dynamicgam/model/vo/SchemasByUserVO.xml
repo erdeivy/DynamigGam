@@ -9,6 +9,7 @@
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
+  ComponentClass="com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl"
   RowClass="com.uca.dynamicgam.model.vo.SchemasByUserVORowImpl">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>

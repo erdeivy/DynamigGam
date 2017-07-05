@@ -12,6 +12,7 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
+  ComponentClass="com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl"
   PageIterMode="Full">
   <ViewAccessor
     Name="GamTablesVO1"
@@ -265,7 +266,7 @@
     LOVName="LOV_RewardName"
     IsNotNull="true">
     <TransientExpression
-      trustMode="untrusted"><![CDATA[adf.object.GamRewardByPkVO?.first()?.getAttribute('RewardName')]]></TransientExpression>
+      trustMode="untrusted"><![CDATA[IdReward != null ? adf.object.GamRewardByPkVO?.first()?.getAttribute('RewardName') : null]]></TransientExpression>
     <RecalcCondition
       trustMode="untrusted"><![CDATA[false]]></RecalcCondition>
     <Properties>

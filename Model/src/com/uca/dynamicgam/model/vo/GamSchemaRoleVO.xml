@@ -12,6 +12,7 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
+  ComponentClass="com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl"
   PageIterMode="Full">
   <Variable
     Name="bind_rolename"

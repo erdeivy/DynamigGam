@@ -1,5 +1,6 @@
 package com.uca.dynamicgam.model.vo;
 
+import com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl;
 import com.uca.dynamicgam.model.vo.common.GamCellVO;
 
 import oracle.jbo.server.ViewObjectImpl;
@@ -9,7 +10,7 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class GamCellVOImpl extends ViewObjectImpl implements GamCellVO {
+public class GamCellVOImpl extends DynamicGamBaseVOImpl implements GamCellVO {
     /**
      * This is the default constructor (do not remove).
      */

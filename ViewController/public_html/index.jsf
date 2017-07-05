@@ -27,10 +27,10 @@
                                             <af:image source="#{rewardMessage.image}" shortDesc="#{rewardMessage.name}"
                                                       id="i3"/>
                                             <af:spacer width="1" id="s2"/>
-                                            <af:outputText value="#{rewardMessage.qty}" shortDesc="#{rewardMessage.qty}"
+                                            <af:outputText value="Qty: #{rewardMessage.qty}" shortDesc="#{rewardMessage.qty}"
                                                            id="ot3"/>
                                             <af:spacer width="3" id="s3"/>
-                                            <af:outputText value="#{rewardMessage.name}"
+                                            <af:outputText value=", Reward: #{rewardMessage.name}"
                                                            shortDesc="#{rewardMessage.description}" id="ot2"/>
                                         </af:panelGroupLayout>
                                     </af:iterator>

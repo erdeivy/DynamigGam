@@ -2,6 +2,7 @@ package com.uca.dynamicgam.view.beans;
 
 import com.uca.dynamicgam.model.beans.TableRow;
 
+import com.uca.dynamicgam.view.beans.base.DynamicGamBaseBean;
 import com.uca.dynamicgam.view.utils.ADFUtils;
 
 import com.uca.dynamicgam.view.utils.JSFUtils;
@@ -20,7 +21,7 @@ import oracle.adf.view.rich.event.DialogEvent;
 
 import oracle.binding.OperationBinding;
 
-public class DynamicTableBean {
+public class DynamicTableBean extends DynamicGamBaseBean {
     private RichTable tableBinding;
     private RichPopup confirmDeletePopup;
 
@@ -65,7 +66,8 @@ public class DynamicTableBean {
             oper.getParamsMap().put("rowKey", rowKey);
             oper.execute();
             JSFUtils.addPartialTarget(getTableBinding());
-            ADFUtils.invokeOperationBinding("Commit");
+            List rewardsList = (List) ADFUtils.invokeOperationBinding("Commit");
+            showRewards(rewardsList);
         }
     }
 

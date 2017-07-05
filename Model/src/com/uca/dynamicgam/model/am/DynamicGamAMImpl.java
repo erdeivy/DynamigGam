@@ -34,6 +34,7 @@ import oracle.jbo.NameValuePairs;
 import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSetIterator;
+import oracle.jbo.Session;
 import oracle.jbo.ViewObject;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.DBTransaction;
@@ -58,7 +59,14 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
      */
     public DynamicGamAMImpl() {
     }
-
+    
+    @Override
+    protected void prepareSession(Session session){
+        super.prepareSession(session);
+        //To avoid the lose of current row
+        this.getDBTransaction().setClearCacheOnRollback(false);
+    }
+    
     private String buildParamPart(int paramCount) {
         StringBuilder builder = new StringBuilder();
         builder.append("(");

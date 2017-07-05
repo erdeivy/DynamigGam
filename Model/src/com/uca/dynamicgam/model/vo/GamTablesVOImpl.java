@@ -2,6 +2,7 @@ package com.uca.dynamicgam.model.vo;
 
 import com.uca.dynamicgam.model.beans.TableRow;
 
+import com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl;
 import com.uca.dynamicgam.model.vo.common.GamTablesVO;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class GamTablesVOImpl extends ViewObjectImpl implements GamTablesVO {
+public class GamTablesVOImpl extends DynamicGamBaseVOImpl implements GamTablesVO {
     /**
      * This is the default constructor (do not remove).
      */

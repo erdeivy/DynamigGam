@@ -10,6 +10,11 @@
             <managed-bean-class>com.uca.dynamicgam.view.beans.SchemaRolesBean</managed-bean-class>
             <managed-bean-scope>backingBean</managed-bean-scope>
         </managed-bean>
+        <managed-bean id="__8">
+            <managed-bean-name>StrategiesBean</managed-bean-name>
+            <managed-bean-class>com.uca.dynamicgam.view.beans.StrategiesBean</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
         <view id="schemas">
             <page>/views/administration/schemas/schemas.jsff</page>
         </view>

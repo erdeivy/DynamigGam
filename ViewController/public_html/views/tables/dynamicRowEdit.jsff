@@ -8,7 +8,7 @@
             <f:facet name="menus"/>
             <f:facet name="toolbar">
                 <af:toolbar id="t2">
-                    <af:button icon="/icons/save.png" actionListener="#{bindings.Commit.execute}"
+                    <af:button icon="/icons/save.png" actionListener="#{backingBeanScope.DynamicRowBean.commitListener}"
                                text="#{viewcontrollerBundle.COMMIT_LABEL}" id="b1"/>
                     <af:button icon="/icons/cancel.png" text="#{viewcontrollerBundle.ROLLBACK_LABEL}" id="b3"
                                immediate="true"/>

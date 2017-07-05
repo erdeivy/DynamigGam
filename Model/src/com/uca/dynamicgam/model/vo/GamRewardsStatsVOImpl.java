@@ -2,6 +2,7 @@ package com.uca.dynamicgam.model.vo;
 
 import com.uca.dynamicgam.model.beans.RewardMessage;
 
+import com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl;
 import com.uca.dynamicgam.model.vo.common.GamRewardsStatsVO;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class GamRewardsStatsVOImpl extends ViewObjectImpl implements GamRewardsStatsVO {
+public class GamRewardsStatsVOImpl extends DynamicGamBaseVOImpl implements GamRewardsStatsVO {
     /**
      * This is the default constructor (do not remove).
      */

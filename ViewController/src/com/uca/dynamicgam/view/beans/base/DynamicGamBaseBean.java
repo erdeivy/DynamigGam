@@ -14,34 +14,25 @@ import oracle.adf.view.rich.component.rich.RichPopup;
 import org.apache.myfaces.trinidad.component.UIXIterator;
 
 public class DynamicGamBaseBean {
-    private RichPopup rewardsPopup;
 
     public DynamicGamBaseBean() {
         super();
     }
 
-    public void setRewardsPopup(RichPopup rewardsPopup) {
-        this.rewardsPopup = rewardsPopup;
-    }
-
-    public RichPopup getRewardsPopup() {
-        return rewardsPopup;
-    }
-
     public void onPageLoad(ComponentSystemEvent componentSystemEvent) {
         List rewardsList = (List) ADFUtils.findOperation("getNewRewards").execute();
-        if (rewardsList != null && !rewardsList.isEmpty()) {
-            showRewards(rewardsList);
-        }
+        showRewards(rewardsList);
     }
 
-    private void showRewards(List rewardsList) {
-        RichPopup rewardsPopup = (RichPopup) JSFUtils.findComponentInRoot("rewardsPopup");
-        if (rewardsPopup != null) {
-            UIXIterator rewardsIterator = (UIXIterator) JSFUtils.findComponent(rewardsPopup, "rewrdIt");
-            if (rewardsIterator != null) {
-                rewardsIterator.setValue(rewardsList);
-                ADFUtils.showPopup(rewardsPopup);
+    protected void showRewards(List rewardsList) {
+        if (rewardsList != null && !rewardsList.isEmpty()) {
+            RichPopup rewardsPopup = (RichPopup) JSFUtils.findComponentInRoot("rewardsPopup");
+            if (rewardsPopup != null) {
+                UIXIterator rewardsIterator = (UIXIterator) JSFUtils.findComponent(rewardsPopup, "rewrdIt");
+                if (rewardsIterator != null) {
+                    rewardsIterator.setValue(rewardsList);
+                    ADFUtils.showPopup(rewardsPopup);
+                }
             }
         }
     }

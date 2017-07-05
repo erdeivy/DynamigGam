@@ -12,7 +12,16 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
+  ComponentClass="com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl"
   PageIterMode="Full">
+  <Variable
+    Name="bind_user"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <TransientExpression
+      trustMode="untrusted"
+      Name="expression"><![CDATA[adf.context.securityContext.getUserName()]]></TransientExpression>
+  </Variable>
   <ViewAccessor
     Name="GamUsersVO"
     ViewObjectName="com.uca.dynamicgam.model.vo.GamUsersVO"
@@ -234,6 +243,22 @@
       Name="GamHistoryVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
+        Name="UserId"
+        ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bind_user"
+        IsBindVarValue="true"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
         Name="GamHistoryVOCriteria_GamHistoryVOCriteria_row_0_Operation"
         ViewAttribute="Operation"
         Operator="="
@@ -380,6 +405,13 @@
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="HistoryTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="HistoryTs"
