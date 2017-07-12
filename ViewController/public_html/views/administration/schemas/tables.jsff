@@ -30,7 +30,7 @@
                           fetchSize="#{bindings.GamTablesVO.rangeSize}"
                           filterModel="#{bindings.GamTablesVOQuery.queryDescriptor}"
                           queryListener="#{bindings.GamTablesVOQuery.processQuery}" varStatus="vs" id="t1"
-                          columnStretching="column:c1" partialTriggers="::b4 ::b9 :::pc2:b2 :::pc2:b7"
+                          columnStretching="column:c1" partialTriggers="::b4 ::b8 ::b9 :::pc2:b2 :::pc2:b6 :::pc2:b7"
                           editingMode="clickToEdit">
                     <af:column width="25" align="center" rowHeader="true" id="counter">
                         <af:outputText value="#{vs.index+1}" id="otCounter"/>
@@ -81,7 +81,7 @@
                           fetchSize="#{bindings.GamColumnsVO.rangeSize}" columnStretching="column:c3"
                           filterModel="#{bindings.GamColumnsVOQuery.queryDescriptor}"
                           queryListener="#{bindings.GamColumnsVOQuery.processQuery}" varStatus="vs" id="t2"
-                          partialTriggers="::b2 ::b7 :::pc1:b4 :::pc1:b9" editingMode="clickToEdit">
+                          partialTriggers="::b2 ::b6 ::b7 :::pc1:b4 :::pc1:b8 :::pc1:b9" editingMode="clickToEdit">
                     <af:column width="25" align="center" rowHeader="true" id="c5">
                         <af:outputText value="#{vs.index+1}" id="ot1"/>
                     </af:column>

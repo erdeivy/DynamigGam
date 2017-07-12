@@ -29,6 +29,7 @@ import oracle.adf.share.logging.ADFLogger;
 
 import oracle.adf.share.security.SecurityContext;
 
+import oracle.jbo.DMLConstraintException;
 import oracle.jbo.JboException;
 import oracle.jbo.NameValuePairs;
 import oracle.jbo.Row;
@@ -59,14 +60,14 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
      */
     public DynamicGamAMImpl() {
     }
-    
+
     @Override
-    protected void prepareSession(Session session){
+    protected void prepareSession(Session session) {
         super.prepareSession(session);
         //To avoid the lose of current row
         this.getDBTransaction().setClearCacheOnRollback(false);
     }
-    
+
     private String buildParamPart(int paramCount) {
         StringBuilder builder = new StringBuilder();
         builder.append("(");
@@ -402,7 +403,13 @@ public class DynamicGamAMImpl extends ApplicationModuleImpl implements DynamicGa
 
     public List setUserAndCommit() {
         callStoredProcedure(getDBTransaction(), "PKG_GAM_USER.SET_USER", getLoggedUser());
-        getDBTransaction().commit();
+        try {
+            getDBTransaction().commit();
+        } catch (DMLConstraintException e) {
+            if (e.getMessage() != null && e.getMessage().contains("JBO-26048")) {
+                throw new JboException("This record can't be deleted because it has dependencies. Please, revert your changes.");
+            }
+        }
         return getUserNotShownRewardsVO().getNewRewards();
     }
 

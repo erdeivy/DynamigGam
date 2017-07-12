@@ -174,8 +174,8 @@
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="DynamicGam-ViewController-webapp"/>
-      <value n="j2eeWebContextRoot" v="DynamicGam-ViewController-context-root"/>
+      <value n="j2eeWebAppName" v="DynamicGam"/>
+      <value n="j2eeWebContextRoot" v="DynamicGam"/>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
