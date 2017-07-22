@@ -10,8 +10,6 @@
                         <af:button actionListener="#{bindings.CreateInsert.execute}"
                                    text="#{viewcontrollerBundle.NEW_USER}" disabled="#{!bindings.CreateInsert.enabled}"
                                    id="b1" icon="/icons/add.png"/>
-                        <af:button actionListener="#{bindings.Delete.execute}" text="#{viewcontrollerBundle.DELETE}"
-                                   disabled="#{!bindings.Delete.enabled}" id="b2" icon="/icons/delete.png"/>
                         <af:button actionListener="#{bindings.Commit.execute}"
                                    text="#{viewcontrollerBundle.COMMIT_LABEL}" disabled="#{!bindings.Commit.enabled}"
                                    id="b3" icon="/icons/save.png"/>
@@ -88,6 +86,10 @@
                     <af:column headerText="#{viewcontrollerBundle.SET_ROLES}" id="c5" width="70" align="center">
                         <af:link shortDesc="#{viewcontrollerBundle.SET_ROLES}" action="goUserRoles" id="l1"
                                  icon="/icons/user.png"/>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.DELETE}" id="c6" width="70" align="center">
+                        <af:link actionListener="#{bindings.Delete.execute}" shortDesc="#{viewcontrollerBundle.DELETE}"
+                                   id="b2" icon="/icons/delete.png"/>
                     </af:column>
                 </af:table>
             </af:panelCollection>

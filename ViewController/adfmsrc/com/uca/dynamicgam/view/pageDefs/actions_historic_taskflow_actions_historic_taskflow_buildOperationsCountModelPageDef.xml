@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39"
+                id="actions_historic_taskflow_actions_historic_taskflow_buildOperationsCountModelPageDef"
+                Package="com.uca.dynamicgam.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="buildOperationsCountModel" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="buildOperationsCountModel" IsViewObjectMethod="false"
+                  DataControl="DynamicGamAMDataControl" InstanceName="data.DynamicGamAMDataControl.dataProvider"
+                  ReturnName="data.DynamicGamAMDataControl.methodResults.buildOperationsCountModel_DynamicGamAMDataControl_dataProvider_buildOperationsCountModel_result"/>
+  </bindings>
+</pageDefinition>

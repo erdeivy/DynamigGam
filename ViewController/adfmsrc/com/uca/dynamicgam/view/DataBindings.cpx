@@ -28,6 +28,10 @@
     <page path="/views/historic/historic.jsff" usageId="com_uca_dynamicgam_view_historicPageDef"/>
     <page path="/views/rewardsStats/rewardsStats.jsff" usageId="com_uca_dynamicgam_view_rewardsStatsPageDef"/>
     <page path="/views/welcome.jsff" usageId="com_uca_dynamicgam_view_welcomePageDef"/>
+    <page path="/views/historic/historicAdmin.jsff" usageId="com_uca_dynamicgam_view_historicAdminPageDef"/>
+    <page path="/WEB-INF/actions-historic-taskflow.xml#actions-historic-taskflow@buildOperationsCountModel"
+          usageId="com_uca_dynamicgam_view_actions_historic_taskflow_actions_historic_taskflow_buildOperationsCountModelPageDef"/>
+    <page path="/views/historic/pieChart.jsff" usageId="com_uca_dynamicgam_view_pieChartPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_uca_dynamicgam_view_schemasPageDef" path="views.schemasPageDef"/>
@@ -49,6 +53,10 @@
     <page id="com_uca_dynamicgam_view_historicPageDef" path="views.historic.historicPageDef"/>
     <page id="com_uca_dynamicgam_view_rewardsStatsPageDef" path="views.rewardsStats.rewardsStatsPageDef"/>
     <page id="com_uca_dynamicgam_view_welcomePageDef" path="views.welcomePageDef"/>
+    <page id="com_uca_dynamicgam_view_historicAdminPageDef" path="views.historic.historicAdminPageDef"/>
+    <page id="com_uca_dynamicgam_view_actions_historic_taskflow_actions_historic_taskflow_buildOperationsCountModelPageDef"
+          path="com.uca.dynamicgam.view.pageDefs.actions_historic_taskflow_actions_historic_taskflow_buildOperationsCountModelPageDef"/>
+    <page id="com_uca_dynamicgam_view_pieChartPageDef" path="views.historic.pieChartPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="DynamicGamAMDataControl" Package="com.uca.dynamicgam.model.am"

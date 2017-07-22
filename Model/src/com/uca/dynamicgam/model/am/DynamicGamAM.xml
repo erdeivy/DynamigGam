@@ -111,6 +111,9 @@
          Name="UserNotShown"
          FullName="com.uca.dynamicgam.model.vo.GamRewardsStatsVO.UserNotShown"/>
    </ViewUsage>
+   <ViewUsage
+      Name="OperationsCountVO"
+      ViewObjectName="com.uca.dynamicgam.model.vo.OperationsCountVO"/>
    <ViewLinkUsage
       Name="GamTablasFkVL1"
       ViewLinkObjectName="com.uca.dynamicgam.model.vo.vl.GamTablasFkVL"
@@ -217,6 +220,13 @@
          <Return
             Name="_return_type_"
             Type="java.util.List"/>
+      </Method>
+      <Method
+         Name="buildOperationsCountModel"
+         MethodName="buildOperationsCountModel">
+         <Return
+            Name="_return_type_"
+            Type="void"/>
       </Method>
    </ClientInterface>
    <ResourceBundle >

@@ -148,7 +148,7 @@
                     <af:column sortProperty="#{bindings.GamActionsVO.hints.RewardName.name}" filterable="true"
                                sortable="true" headerText="#{bindings.GamActionsVO.hints.RewardName.label}" id="c8"
                                width="250">
-                        <af:inputListOfValues id="rewardNameId"
+                        <af:inputListOfValues id="rewardNameId" autoSubmit="true"
                                               popupTitle="Search and Select: #{bindings.GamActionsVO.hints.RewardName.label}"
                                               value="#{row.bindings.RewardName.inputValue}"
                                               model="#{row.bindings.RewardName.listOfValuesModel}"

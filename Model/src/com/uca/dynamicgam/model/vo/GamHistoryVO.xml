@@ -12,8 +12,13 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  ComponentClass="com.uca.dynamicgam.model.vo.base.DynamicGamBaseVOImpl"
-  PageIterMode="Full">
+  ComponentClass="com.uca.dynamicgam.model.vo.GamHistoryVOImpl"
+  PageIterMode="Full"
+  RowClass="com.uca.dynamicgam.model.vo.GamHistoryVORowImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <Variable
     Name="bind_user"
     Kind="viewcriteria"
@@ -405,6 +410,13 @@
     <PropertiesBundle
       PropertiesFile="com.uca.dynamicgam.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="HistoryTs"
+      Ascending="false"/>
+    <Sort
+      Attribute="UserId"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="HistoryTs"

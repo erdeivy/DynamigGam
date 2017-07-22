@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="actions-historic-taskflow">
-    <default-activity>historic</default-activity>
+    <default-activity>isAdmin</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ActionsHistoricBean</managed-bean-name>
+      <managed-bean-class>com.uca.dynamicgam.view.beans.ActionsHistoricBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
     <view id="historic">
       <page>/views/historic/historic.jsff</page>
     </view>
+    <view id="historicAdmin">
+      <page>/views/historic/historicAdmin.jsff</page>
+    </view>
+    <router id="isAdmin">
+      <case id="__5">
+        <expression>#{securityContext.userInRole['ROL_ADMIN']}</expression>
+        <outcome>yes</outcome>
+      </case>
+      <default-outcome>no</default-outcome>
+    </router>
+    <view id="pieChart">
+      <page>/views/historic/pieChart.jsff</page>
+    </view>
+    <method-call id="buildOperationsCountModel">
+      <method>#{bindings.buildOperationsCountModel.execute}</method>
+      <outcome>
+        <fixed-outcome>view</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>isAdmin</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>yes</from-outcome>
+        <to-activity-id>historicAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>no</from-outcome>
+        <to-activity-id>historic</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>pieChart</from-outcome>
+        <to-activity-id>buildOperationsCountModel</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>isAdmin</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>buildOperationsCountModel</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>view</from-outcome>
+        <to-activity-id>pieChart</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>

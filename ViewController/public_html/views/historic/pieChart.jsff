@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:button text="Back" icon="/icons/back.png" id="b1" action="back"/>
+    <af:panelGroupLayout id="pgl2" layout="vertical" halign="center">
+      <dvt:pieChart id="pieChart1" var="row" value="#{bindings.OperationsCountVO.collectionModel}" threeDEffect="on">
+        <dvt:chartLegend id="cl1"/>
+        <dvt:pieDataItem id="di1" value="#{row.Count}" label="#{row.Operation}"/>
+      </dvt:pieChart>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</ui:composition>

@@ -51,18 +51,18 @@
                                                 action="#{backingBeanScope.MenuBean.goWelcomeAction}"/>
                             <af:menu text="Administration" id="m2" icon="/icons/admin.png"
                                      rendered="#{securityContext.userInRole['ROL_ADMIN']}">
-                                <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goSchemasAction}"
-                                                    icon="/icons/database.png"/>
-                                <af:commandMenuItem text="Users" id="cmi4" immediate="true"
-                                                    action="#{backingBeanScope.MenuBean.goUsersAction}"
-                                                    icon="/icons/user.png"/>
                                 <af:commandMenuItem text="Roles" id="cmi5" immediate="true"
                                                     action="#{backingBeanScope.MenuBean.goRolesAction}"
                                                     icon="/icons/keys.png"/>
+                                <af:commandMenuItem text="Users" id="cmi4" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goUsersAction}"
+                                                    icon="/icons/user.png"/>
                                 <af:commandMenuItem text="Rewards" id="cmi3" immediate="true"
                                                     action="#{backingBeanScope.MenuBean.goRewardsAction}"
                                                     icon="/icons/medal.png"/>
+                                <af:commandMenuItem text="Schemas" id="cmi1" immediate="true"
+                                                    action="#{backingBeanScope.MenuBean.goSchemasAction}"
+                                                    icon="/icons/database.png"/>
                             </af:menu>
                             <af:commandMenuItem text="Data maintenance" id="cmi6" immediate="true"
                                                 action="#{backingBeanScope.MenuBean.goViewTablesAction}"
@@ -70,7 +70,7 @@
                             <af:commandMenuItem text="Actions Historic" id="cmi8" immediate="true"
                                                 action="#{backingBeanScope.MenuBean.goHistoricAction}"
                                                 icon="/icons/calendar.png"/>
-                            <af:commandMenuItem text="Rewards Statistics" id="cmi9" immediate="true"
+                            <af:commandMenuItem text="Rewards Historic" id="cmi9" immediate="true"
                                                 action="#{backingBeanScope.MenuBean.goRewardsStatsAction}"
                                                 icon="/icons/medal.png"/>
                             <af:spacer clientComponent="true" id="s1"/>

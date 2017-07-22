@@ -5,12 +5,12 @@
     <c:set var="viewcontrollerBundle" value="#{adfBundle['com.uca.dynamicgam.view.ViewControllerBundle']}"/>
     <af:panelGroupLayout layout="vertical" id="pgl1">
         <af:panelHeader text="#{viewcontrollerBundle.ACTIONS_HISTORIC}" id="ph1">
-            <af:query id="qryId1" headerText="#{viewcontrollerBundle.SEARCH}" disclosed="true"
-                      value="#{bindings.SearchCriteriaQuery.queryDescriptor}"
-                      model="#{bindings.SearchCriteriaQuery.queryModel}"
-                      queryListener="#{bindings.SearchCriteriaQuery.processQuery}"
-                      queryOperationListener="#{bindings.SearchCriteriaQuery.processQueryOperation}"
-                      resultComponentId="::pc1:resId1" rows="3" maxColumns="3"/>
+            <af:query id="qryId2" headerText="#{viewcontrollerBundle.SEARCH}" disclosed="true"
+                      value="#{bindings.SearchCriteriaAdminQuery.queryDescriptor}"
+                      model="#{bindings.SearchCriteriaAdminQuery.queryModel}"
+                      queryListener="#{bindings.SearchCriteriaAdminQuery.processQuery}"
+                      resultComponentId="::pc1:resId1" rows="3" maxColumns="3"
+                      queryOperationListener="#{bindings.SearchCriteriaAdminQuery.processQueryOperation}"/>
         </af:panelHeader>
         <af:panelCollection id="pc1" styleClass="AFStretchWidth">
             <f:facet name="toolbar">
@@ -23,7 +23,9 @@
                       emptyText="#{bindings.GamHistoryVO.viewable ? 'No data to display.' : 'Access Denied.'}"
                       rowBandingInterval="0" selectedRowKeys="#{bindings.GamHistoryVO.collectionModel.selectedRow}"
                       selectionListener="#{bindings.GamHistoryVO.collectionModel.makeCurrent}" rowSelection="single"
-                      fetchSize="#{bindings.GamHistoryVO.rangeSize}" columnStretching="column:resId1c4" varStatus="vs" id="resId1"
+                      fetchSize="#{bindings.GamHistoryVO.rangeSize}" columnStretching="column:resId1c4"
+                      filterModel="#{bindings.SearchCriteriaAdminQuery.queryDescriptor}"
+                      queryListener="#{bindings.SearchCriteriaAdminQuery.processQuery}" varStatus="vs" id="resId1"
                       scrollPolicy="page" autoHeightRows="10">
                 <af:column width="25" align="center" rowHeader="true" id="counter" sortable="true" filterable="true">
                     <af:outputText value="#{vs.index+1}" id="otCounter"/>
@@ -35,11 +37,21 @@
                         <af:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
                     </af:outputText>
                     <f:facet name="filter">
-                        <af:inputDate value="#{bindings.SearchCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.HistoryTs.value}"
+                        <af:inputDate value="#{bindings.SearchCriteriaAdminQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.HistoryTs.value}"
                                       id="id1">
                             <af:convertDateTime pattern="#{bindings.GamHistoryVO.hints.HistoryTs.format}"/>
                         </af:inputDate>
                     </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.GamHistoryVO.hints.UserId.name}" filterable="true" sortable="true"
+                           headerText="#{bindings.GamHistoryVO.hints.UserId.label}" id="resId1c1">
+                    <af:selectOneChoice value="#{row.bindings.UserId.inputValue}" label="#{row.bindings.UserId.label}"
+                                        required="#{bindings.GamHistoryVO.hints.UserId.mandatory}"
+                                        shortDesc="#{bindings.GamHistoryVO.hints.UserId.tooltip}" readOnly="true"
+                                        id="soc1">
+                        <f:selectItems value="#{row.bindings.UserId.items}" id="si1"/>
+                        <f:validator binding="#{row.bindings.UserId.validator}"/>
+                    </af:selectOneChoice>
                 </af:column>
                 <af:column sortProperty="#{bindings.GamHistoryVO.hints.Operation.name}" filterable="true"
                            sortable="true" headerText="#{bindings.GamHistoryVO.hints.Operation.label}" id="resId1c2"
@@ -72,7 +84,7 @@
                 </af:column>
             </af:table>
         </af:panelCollection>
-        <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+        <af:popup childCreation="immediate" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
                   binding="#{backingBeanScope.ActionsHistoricBean.pieChartPopup}">
             <af:dialog id="d1" title="Statistics by operation type">
                 <f:facet name="buttonBar"/>

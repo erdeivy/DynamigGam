@@ -10,8 +10,6 @@
                         <af:button actionListener="#{bindings.CreateInsert.execute}"
                                    text="#{viewcontrollerBundle.NEW_ROLE}" disabled="#{!bindings.CreateInsert.enabled}"
                                    id="b1" icon="/icons/add.png"/>
-                        <af:button actionListener="#{bindings.Delete.execute}" text="#{viewcontrollerBundle.DELETE}"
-                                   disabled="#{!bindings.Delete.enabled}" id="b2" icon="/icons/delete.png"/>
                         <af:button actionListener="#{bindings.Commit.execute}"
                                    text="#{viewcontrollerBundle.COMMIT_LABEL}" disabled="#{!bindings.Commit.enabled}"
                                    id="b3" icon="/icons/save.png"/>
@@ -24,14 +22,15 @@
                     </af:toolbar>
                 </f:facet>
                 <af:table value="#{bindings.GamRolesVO.collectionModel}" var="row"
-                          rows="#{bindings.GamRolesVO.rangeSize}"
+                          rows="#{bindings.GamRolesVO.rangeSize}" editingMode="clickToEdit"
                           emptyText="#{bindings.GamRolesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
                           rowBandingInterval="0" selectedRowKeys="#{bindings.GamRolesVO.collectionModel.selectedRow}"
                           selectionListener="#{bindings.GamRolesVO.collectionModel.makeCurrent}" rowSelection="single"
                           fetchSize="#{bindings.GamRolesVO.rangeSize}" styleClass="AFStretchWidth"
                           filterModel="#{bindings.GamRolesVOQuery.queryDescriptor}"
                           queryListener="#{bindings.GamRolesVOQuery.processQuery}" varStatus="vs" id="t1"
-                          partialTriggers="::b1 ::b2" columnStretching="column:c1">
+                          partialTriggers="::b1 l1" columnStretching="column:c1" autoHeightRows="10"
+                          scrollPolicy="page">
                     <af:column width="25" align="center" rowHeader="true" id="counter">
                         <af:outputText value="#{vs.index+1}" id="otCounter"/>
                     </af:column>
@@ -45,6 +44,10 @@
                                       shortDesc="#{bindings.GamRolesVO.hints.RoleName.tooltip}" id="it1">
                             <f:validator binding="#{row.bindings.RoleName.validator}"/>
                         </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.DELETE}" id="c6" width="70" align="center">
+                        <af:link actionListener="#{bindings.Delete.execute}" shortDesc="#{viewcontrollerBundle.DELETE}"
+                                   id="l1" icon="/icons/delete.png"/>
                     </af:column>
                 </af:table>
             </af:panelCollection>

@@ -9,16 +9,137 @@
       <property
          name="page">/views/historic/historic.jsff</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>historic&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>historic&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">134.79883</property>
+         name="y">105.09766</property>
+      <property
+         name="x">162.5</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">historicAdmin</property>
+      <property
+         name="page">/views/historic/historicAdmin.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>historicAdmin&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-8.902344</property>
       <property
          name="pageFragment">true</property>
       <property
-         name="x">199.5</property>
+         name="x">160.01172</property>
    </View>
+   <Router
+      id="Router4">
+      <property
+         name="activityId">isAdmin</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>isAdmin&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">61.29883</property>
+      <property
+         name="x">-107.0</property>
+   </Router>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router4"
+      to="View3">
+      <property
+         name="fromOutcome">yes</property>
+      <property
+         name="sdm:polyPoints">T50,-107.0,6.948242,160.01172,-63.25293,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="Router4"
+      to="View2">
+      <property
+         name="fromOutcome">no</property>
+      <property
+         name="sdm:polyPoints">B50,-107.0,114.94824,162.5,158.74707,B50</property>
+   </ControlFlowCase>
+   <View
+      id="View7">
+      <property
+         name="activityId">pieChart</property>
+      <property
+         name="page">/views/historic/pieChart.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>pieChart&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-23.00586</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">708.5</property>
+   </View>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule9">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">362.89648</property>
+      <property
+         name="x">234.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="WildcardControlFlowRule9"
+      to="MethodCall11">
+      <property
+         name="fromOutcome">pieChart</property>
+      <property
+         name="sdm:polyPoints">T50,234.0,320.24707,374.3789,86.09766,B50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall11">
+      <property
+         name="activityId">buildOperationsCountModel</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>buildOperationsCountModel&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">32.448242</property>
+      <property
+         name="x">374.3789</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="MethodCall11"
+      to="View7">
+      <property
+         name="fromOutcome">view</property>
+      <property
+         name="sdm:polyPoints">R50,415.3789,32.097656,667.5,-23.356445,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="WildcardControlFlowRule9"
+      to="Router4">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">L50,198.0,363.0459,-110.5,119.59575,B44</property>
+   </ControlFlowCase>
 </SDM>

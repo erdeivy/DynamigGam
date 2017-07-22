@@ -29,7 +29,7 @@
                       rowSelection="single" fetchSize="#{bindings.GamRewardsStatsVO.rangeSize}"
                       filterModel="#{bindings.SearchCriteriaQuery.queryDescriptor}" columnStretching="column:c1"
                       queryListener="#{bindings.SearchCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
-                      scrollPolicy="page">
+                      scrollPolicy="page" autoHeightRows="10">
                 <af:column width="25" align="center" rowHeader="true" id="counter" sortable="true" filterable="true">
                     <af:outputText value="#{vs.index+1}" id="otCounter"/>
                 </af:column>
@@ -48,7 +48,8 @@
                 </af:column>
                 <af:column sortProperty="#{bindings.GamRewardsStatsVO.hints.UserId.name}" filterable="true"
                            sortable="true" headerText="#{bindings.GamRewardsStatsVO.hints.UserId.label}" id="resId1c1"
-                           width="250">
+                           width="250"
+                           rendered="#{securityContext.userInRole['ROL_ADMIN']}">
                     <af:selectOneChoice value="#{row.bindings.UserId.inputValue}" label="#{row.bindings.UserId.label}"
                                         required="#{bindings.GamRewardsStatsVO.hints.UserId.mandatory}"
                                         shortDesc="#{bindings.GamRewardsStatsVO.hints.UserId.tooltip}" readOnly="true"
